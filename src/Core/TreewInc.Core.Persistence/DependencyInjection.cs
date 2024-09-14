@@ -11,16 +11,8 @@ public static class DependencyInjection
 	{
 		services.AddDbContext<AppDbContext>(builder =>
 		{
-			builder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-		});
-		return services;
-	}
-	
-	public static IServiceCollection AddPersistenceTemp(this IServiceCollection services, IConfiguration configuration)
-	{
-		services.AddDbContext<AppDbContext>(builder =>
-		{
-			builder.UseSqlServer(configuration.GetConnectionString("Temp"));
+			//builder.UseSqlServer(configuration.GetConnectionString("Temp"));
+			builder.UseInMemoryDatabase("TreewIncStore");
 		});
 		return services;
 	}

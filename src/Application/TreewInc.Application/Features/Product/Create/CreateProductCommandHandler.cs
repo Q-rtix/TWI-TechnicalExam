@@ -1,10 +1,10 @@
-using MediatR;
 using Results;
 using TreewInc.Application.Abstractions;
+using TreewInc.Application.Abstractions.Messaging;
 
 namespace TreewInc.Application.Features.Product.Create;
 
-public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Result<CreateProductCommandResponse>>
+public class CreateProductCommandHandler : IHandler<CreateProductCommand, CreateProductCommandResponse>
 {
 	private readonly IUnitOfWork _unitOfWork;
 

@@ -4,7 +4,7 @@ using TreewInc.Core.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddPersistenceTemp(builder.Configuration)
+builder.Services.AddPersistence(builder.Configuration)
 	.AddInfrastructure()
 	.AddApplication()
 	.AddControllers();

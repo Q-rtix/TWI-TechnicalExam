@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using TreewInc.Application.Abstractions;
 using TreewInc.Core.Domain.Entities;
 using TreewInc.Core.Persistence.Contexts;
@@ -11,29 +12,33 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
 
 	public Repository(AppDbContext context) => _dbSet = context.Set<TEntity>();
 
-	public IQueryable<TEntity> GetMany(bool asNoTracking = false, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null)
+	public IQueryable<TEntity> GetMany(Expression<Func<TEntity, bool>>[]? filters, bool asNoTracking = false, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null)
 	{
 		IQueryable<TEntity> query = _dbSet;
-		
-		if(asNoTracking)
+
+		if (asNoTracking)
 			query = query.AsNoTracking();
-		if(orderBy is not null)
+		if (filters is not null)
+			query = filters.Aggregate(query, (current, filter) => current.Where(filter));
+		if (orderBy is not null)
 			query = orderBy(query);
 
 		return query;
 	}
 
-	public Task<TEntity?> GetOneAsync(int id, bool asNoTracking = false, CancellationToken cancellationToken = default)
+	public Task<TEntity?> GetOneAsync(Expression<Func<TEntity, bool>>[] filters, bool asNoTracking = false, CancellationToken cancellationToken = default)
 	{
 		IQueryable<TEntity> query = _dbSet;
-		
-		if(asNoTracking)
+
+		if (asNoTracking)
 			query = query.AsNoTracking();
 
-		return query.FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
+		query = filters.Aggregate(query, (current, filter) => current.Where(filter));
+
+		return query.FirstOrDefaultAsync(cancellationToken);
 	}
 
-	public Task AddOneAsync(TEntity entity, CancellationToken cancellationToken = default) 
+	public Task AddOneAsync(TEntity entity, CancellationToken cancellationToken = default)
 		=> _dbSet.AddAsync(entity, cancellationToken).AsTask();
 
 	public void UpdateOne(TEntity entity)

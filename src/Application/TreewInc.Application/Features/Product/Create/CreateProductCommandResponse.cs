@@ -1,3 +1,3 @@
 namespace TreewInc.Application.Features.Product.Create;
 
-public record CreateProductCommandResponse(int Id);
+public record CreateProductCommandResponse(int ProductId);
