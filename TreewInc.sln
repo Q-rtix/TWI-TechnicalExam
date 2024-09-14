@@ -18,6 +18,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreewInc.Core.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreewInc.Application", "src\Application\TreewInc.Application\TreewInc.Application.csproj", "{96EC97B2-35CF-486F-9CCB-69AD689E23C3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{65626637-9CF3-4F91-8713-BB00D7D5EC89}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreewInc.Presentation.WebApi", "src\Presentation\TreewInc.Presentation.WebApi\TreewInc.Presentation.WebApi.csproj", "{EB7BD774-ED78-4E0F-90DD-32C06A9E8B82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +38,7 @@ Global
 		{89CE9FBE-75BC-4310-B5CF-4A042A82FAAD} = {65627219-7124-435B-9C81-07C3341F6309}
 		{53646443-C63F-48C2-AE7F-AA7FBEE0033E} = {65627219-7124-435B-9C81-07C3341F6309}
 		{96EC97B2-35CF-486F-9CCB-69AD689E23C3} = {942165D8-2FE1-4109-9193-7EDB655ED909}
+		{EB7BD774-ED78-4E0F-90DD-32C06A9E8B82} = {612B2D46-3E8F-49D1-8F92-5141F472BAF8}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FB051A6A-51DC-453C-AAFD-D2B123D6DBF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -49,5 +57,9 @@ Global
 		{96EC97B2-35CF-486F-9CCB-69AD689E23C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96EC97B2-35CF-486F-9CCB-69AD689E23C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96EC97B2-35CF-486F-9CCB-69AD689E23C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB7BD774-ED78-4E0F-90DD-32C06A9E8B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB7BD774-ED78-4E0F-90DD-32C06A9E8B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB7BD774-ED78-4E0F-90DD-32C06A9E8B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB7BD774-ED78-4E0F-90DD-32C06A9E8B82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

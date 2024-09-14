@@ -1,0 +1,21 @@
+﻿services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: treewinc-exam-sqlserver
+    hostname: treewinc-exam-sqlserver
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+          cpus: '2'
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=pass1234
+    ports:
+      - "1433:1433"
+    volumes:
+      - treewinc-exam-sqlserver-vol:/var/opt/mssql
+
+volumes:
+  treewinc-exam-sqlserver-vol:
