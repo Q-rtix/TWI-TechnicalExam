@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace TreewInc.Application.Features.Product.Get;
+namespace TreewInc.Application.Features.Products.Get;
 
 public class GetProductsQueryValidator : AbstractValidator<GetProductsQuery>
 {

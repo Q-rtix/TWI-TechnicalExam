@@ -2,7 +2,7 @@
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
 
-namespace TreewInc.Application.Features.Product.GetById;
+namespace TreewInc.Application.Features.Products.GetById;
 
 public class GetProductByIdQueryHandler : IHandler<GetProductByIdQuery, GetProductByIdQueryResponse>
 {

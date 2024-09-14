@@ -2,7 +2,7 @@ using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
 
-namespace TreewInc.Application.Features.Product.Remove;
+namespace TreewInc.Application.Features.Products.Remove;
 
 public class RemoveProductCommandHandler : IHandler<RemoveProductCommand, RemoveProductCommandResponse>
 {

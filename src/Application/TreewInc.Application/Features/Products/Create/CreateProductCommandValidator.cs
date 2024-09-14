@@ -1,10 +1,10 @@
-﻿using FluentValidation;
+using FluentValidation;
 
-namespace TreewInc.Application.Features.Product.Update;
+namespace TreewInc.Application.Features.Products.Create;
 
-public class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommand>
+public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
 {
-	public UpdateProductCommandValidator()
+	public CreateProductCommandValidator()
 	{
 		RuleFor(x => x.Name)
 			.NotNull().NotEmpty().WithMessage("The name is required")

@@ -2,7 +2,7 @@
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
 
-namespace TreewInc.Application.Features.Product.Update;
+namespace TreewInc.Application.Features.Products.Update;
 
 public class UpdateProductCommandHandler : IHandler<UpdateProductCommand, UpdateProductCommandResponse>
 {

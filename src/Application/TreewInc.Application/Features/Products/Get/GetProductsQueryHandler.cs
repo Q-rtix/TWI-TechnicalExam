@@ -3,7 +3,7 @@ using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
 
-namespace TreewInc.Application.Features.Product.Get;
+namespace TreewInc.Application.Features.Products.Get;
 
 public class GetProductsQueryHandler : IHandler<GetProductsQuery, GetProductsQueryResponse>
 {

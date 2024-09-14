@@ -2,7 +2,7 @@ using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
 
-namespace TreewInc.Application.Features.Product.Create;
+namespace TreewInc.Application.Features.Products.Create;
 
 public class CreateProductCommandHandler : IHandler<CreateProductCommand, CreateProductCommandResponse>
 {

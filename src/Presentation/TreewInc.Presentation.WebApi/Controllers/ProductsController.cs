@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Results.ResultTypes;
-using TreewInc.Application.Features.Product.Create;
-using TreewInc.Application.Features.Product.Get;
-using TreewInc.Application.Features.Product.GetById;
-using TreewInc.Application.Features.Product.GetByName;
-using TreewInc.Application.Features.Product.Remove;
-using TreewInc.Application.Features.Product.Update;
+using TreewInc.Application.Features.Products.Create;
+using TreewInc.Application.Features.Products.Get;
+using TreewInc.Application.Features.Products.GetById;
+using TreewInc.Application.Features.Products.GetByName;
+using TreewInc.Application.Features.Products.Remove;
+using TreewInc.Application.Features.Products.Update;
 
 namespace TreewInc.Presentation.WebApi.Controllers;
 

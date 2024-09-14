@@ -1,5 +1,5 @@
 ﻿using TreewInc.Application.Abstractions.Messaging;
 
-namespace TreewInc.Application.Features.Product.GetById;
+namespace TreewInc.Application.Features.Products.GetById;
 
 public record GetProductByIdQuery(int ProductId) : IQuery<GetProductByIdQueryResponse>;

@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace TreewInc.Application.Features.Product.Remove;
+namespace TreewInc.Application.Features.Products.Remove;
 
 public class RemoveProductCommandValidator : AbstractValidator<RemoveProductCommand>
 {
