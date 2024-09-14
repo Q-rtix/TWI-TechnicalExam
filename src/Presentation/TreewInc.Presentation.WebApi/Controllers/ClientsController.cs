@@ -5,6 +5,7 @@ using TreewInc.Application.Features.Clients.Create;
 using TreewInc.Application.Features.Clients.Get;
 using TreewInc.Application.Features.Clients.GetById;
 using TreewInc.Application.Features.Clients.Remove;
+using TreewInc.Application.Features.Clients.SearchBy;
 using TreewInc.Application.Features.Clients.Update;
 
 namespace TreewInc.Presentation.WebApi.Controllers;
@@ -74,6 +75,18 @@ public class ClientsController : ControllerBase
 		return result.Match<ActionResult<RemoveClientCommandResponse>>(
 			success: response => Ok(response),
 			fail: error => BadRequest(error)
+		);
+	}
+	
+	[HttpGet("search")]
+	[ProducesResponseType(typeof(SearchClientsByQueryResponse), StatusCodes.Status200OK)]
+	public async Task<ActionResult<SearchClientsByQueryResponse>> SearchBy(string? name, string? email, string? phone)
+	{
+		var query = new SearchClientsByQuery(name, email, phone);
+		var result = await _mediator.Send(query);
+		return result.Match<ActionResult<SearchClientsByQueryResponse>>(
+			success: response => Ok(response),
+			fail: error => NotFound(error)
 		);
 	}
 }
