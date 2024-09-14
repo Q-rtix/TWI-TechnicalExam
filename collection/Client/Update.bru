@@ -5,17 +5,23 @@ meta {
 }
 
 put {
-  url: {{base-url-https}}/api/products
+  url: {{base-url-https}}/api/clients
   body: json
   auth: none
 }
 
 body:json {
   {
-    "id": 13,
-    "name": "Product {{product-count}}",
-    "description": "Product {{product-count}} description",
-    "price": 2.56,
-    "stock": 10
+    "id": 1,
+    "name": {
+      "firstName": "Carlos",
+      "middleName": "Javier",
+      "lastName": "Ortiz"
+    },
+    "email": "cjo@mail.com",
+    "phone": {
+      "countryCode": "53",
+      "number": "55283129"
+    }
   }
 }

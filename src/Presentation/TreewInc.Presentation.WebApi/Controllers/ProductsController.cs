@@ -57,7 +57,7 @@ public class ProductsController : ControllerBase
 		);
 	}
 	
-	[HttpGet("page")]
+	[HttpGet]
 	[ProducesResponseType(typeof(GetProductsQueryResponse), StatusCodes.Status200OK)]
 	public async Task<ActionResult<GetProductsQueryResponse>> GetProducts([FromQuery] int? pageNumber, [FromQuery] int? pageSize)
 	{

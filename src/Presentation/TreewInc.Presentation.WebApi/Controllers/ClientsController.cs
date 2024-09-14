@@ -31,9 +31,9 @@ public class ClientsController : ControllerBase
 		);
 	}
 	
-	[HttpGet]
+	[HttpGet("{id:int}")]
 	[ProducesResponseType(typeof(GetClientByIdQueryResponse), StatusCodes.Status200OK)]
-	public async Task<ActionResult<GetClientByIdQueryResponse>> GetClientById([FromQuery] int id)
+	public async Task<ActionResult<GetClientByIdQueryResponse>> GetClientById([FromRoute] int id)
 	{
 		var query = new GetClientByIdQuery(id);
 		var result = await _mediator.Send(query);
@@ -43,7 +43,7 @@ public class ClientsController : ControllerBase
 		);
 	}
 	
-	[HttpGet("page")]
+	[HttpGet]
 	[ProducesResponseType(typeof(GetClientsQueryResponse), StatusCodes.Status200OK)]
 	public async Task<ActionResult<GetClientsQueryResponse>> GetClients([FromQuery] int? pageNumber, [FromQuery] int? pageSize)
 	{

@@ -12,10 +12,15 @@ post {
 
 body:json {
   {
-    "name": "Product {{product-count}}",
-    "description": "Product {{product-count}} description",
-    "price": 300.23,
-    "stock": 100
+    "name": {
+      "firstName": "FirstName",
+      "lastName": "LastName"
+    },
+    "email": "test@mail.com",
+    "phone": {
+      "countryCode": "53",
+      "number": "55283129"
+    }
   }
 }
 
