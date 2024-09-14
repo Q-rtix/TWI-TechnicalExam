@@ -17,14 +17,16 @@ public class ClientEntityTypeConfiguration : IEntityTypeConfiguration<Client>
 		builder.Property(e => e.Name)
 			.UsePropertyAccessMode(PropertyAccessMode.Property)
 			.HasConversion(type => NameToString(type), str => StringToName(str))
-			.HasColumnName("FullName");
+			.HasColumnName("FullName")
+			.HasMaxLength(155);
 		builder.Property(e => e.Email)
 			.HasMaxLength(150)
 			.IsUnicode(false);
 		builder.Property(e => e.Phone)
 			.UsePropertyAccessMode(PropertyAccessMode.Property)
 			.HasConversion(type => PhoneToString(type), str => StringToPhoneNumber(str))
-			.HasColumnName("PhoneNumber");
+			.HasColumnName("PhoneNumber")
+			.HasMaxLength(15);
 	}
 
 	private static string NameToString(Name name)

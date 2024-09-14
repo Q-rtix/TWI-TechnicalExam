@@ -14,4 +14,11 @@ public class Client : Entity
 	public Name Name { get; private set; }
 	public string Email { get; private set; }
 	public PhoneNumber Phone { get; private set; }
+
+	public void Update(Name name, string email, PhoneNumber phone)
+	{
+		Name = name;
+		Email = email;
+		Phone = phone;
+	}
 }
