@@ -15,4 +15,13 @@ public static class DependencyInjection
 		});
 		return services;
 	}
+	
+	public static IServiceCollection AddPersistenceTemp(this IServiceCollection services, IConfiguration configuration)
+	{
+		services.AddDbContext<AppDbContext>(builder =>
+		{
+			builder.UseSqlServer(configuration.GetConnectionString("Temp"));
+		});
+		return services;
+	}
 }
