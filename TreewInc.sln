@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreewInc.Core.Domain", "src\Core\TreewInc.Core.Domain\TreewInc.Core.Domain.csproj", "{FB051A6A-51DC-453C-AAFD-D2B123D6DBF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreewInc.Core.Persistence", "src\Core\TreewInc.Core.Persistence\TreewInc.Core.Persistence.csproj", "{89CE9FBE-75BC-4310-B5CF-4A042A82FAAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +24,16 @@ Global
 		{942165D8-2FE1-4109-9193-7EDB655ED909} = {F0B9FA76-01E4-4D32-B2CA-7AB0AF0B24BE}
 		{612B2D46-3E8F-49D1-8F92-5141F472BAF8} = {F0B9FA76-01E4-4D32-B2CA-7AB0AF0B24BE}
 		{FB051A6A-51DC-453C-AAFD-D2B123D6DBF1} = {65627219-7124-435B-9C81-07C3341F6309}
+		{89CE9FBE-75BC-4310-B5CF-4A042A82FAAD} = {65627219-7124-435B-9C81-07C3341F6309}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FB051A6A-51DC-453C-AAFD-D2B123D6DBF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FB051A6A-51DC-453C-AAFD-D2B123D6DBF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB051A6A-51DC-453C-AAFD-D2B123D6DBF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB051A6A-51DC-453C-AAFD-D2B123D6DBF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89CE9FBE-75BC-4310-B5CF-4A042A82FAAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89CE9FBE-75BC-4310-B5CF-4A042A82FAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89CE9FBE-75BC-4310-B5CF-4A042A82FAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89CE9FBE-75BC-4310-B5CF-4A042A82FAAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
