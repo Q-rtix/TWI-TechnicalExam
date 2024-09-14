@@ -4,8 +4,8 @@ using Results.ResultTypes;
 using TreewInc.Application.Features.Products.Create;
 using TreewInc.Application.Features.Products.Get;
 using TreewInc.Application.Features.Products.GetById;
-using TreewInc.Application.Features.Products.GetByName;
 using TreewInc.Application.Features.Products.Remove;
+using TreewInc.Application.Features.Products.SearchBy;
 using TreewInc.Application.Features.Products.Update;
 
 namespace TreewInc.Presentation.WebApi.Controllers;
@@ -31,15 +31,17 @@ public class ProductsController : ControllerBase
 		);
 	}
 	
-	[HttpGet]
-	[ProducesResponseType(typeof(GetProductByNameQuery), StatusCodes.Status200OK)]
-	public async Task<ActionResult<GetProductByNameQueryResponse>> GetProductByName([FromQuery] string name)
+	[HttpGet("search")]
+	[ProducesResponseType(typeof(SearchProductByNameQuery), StatusCodes.Status200OK)]
+	public async Task<ActionResult<SearchProductByNameQueryResponse>> SearchBy([FromQuery] string? name,
+		[FromQuery] string? description, [FromQuery] decimal? minPrice, [FromQuery] decimal? maxPrice,
+		[FromQuery] int? minStock, [FromQuery] int? maxStock)
 	{
-		var query = new GetProductByNameQuery(name);
+		var query = new SearchProductByNameQuery(name, description, minPrice, maxPrice, minStock, maxStock);
 		var result = await _mediator.Send(query);
-		return result.Match<ActionResult<GetProductByNameQueryResponse>>(
+		return result.Match<ActionResult<SearchProductByNameQueryResponse>>(
 			success: response => Ok(response),
-			fail: error => NotFound(error)
+			fail: error => BadRequest(error)
 		);
 	}
 	

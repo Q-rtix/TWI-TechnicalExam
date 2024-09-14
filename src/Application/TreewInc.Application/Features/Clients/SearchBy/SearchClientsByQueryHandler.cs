@@ -17,7 +17,8 @@ public class SearchClientsByQueryHandler : IHandler<SearchClientsByQuery, Search
 	{
 		var filters = GetFilters(request);
 		var clients = await _repository.GetMany(filters: filters, asNoTracking: true)
-			.ToListAsync(cancellationToken: cancellationToken);
+			.ToListAsync(cancellationToken: cancellationToken)
+			.ConfigureAwait(false);
 		return ResultFactory.Ok(new SearchClientsByQueryResponse(clients));
 	}
 	
