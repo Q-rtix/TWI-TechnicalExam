@@ -1,5 +1,4 @@
 ﻿using Results;
-using System.Linq.Expressions;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
 
@@ -13,8 +12,7 @@ public class GetProductByIdQueryHandler : IHandler<GetProductByIdQuery, GetProdu
 	
 	public async Task<Result<GetProductByIdQueryResponse>> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
 	{
-		Expression<Func<Core.Domain.Entities.Product, bool>> filter = p => p.Id == request.ProducId;
-		var product = await _repository.GetOneAsync([filter], true, cancellationToken)
+		var product = await _repository.GetOneAsync([p => p.Id == request.ProducId], true, cancellationToken)
 			.ConfigureAwait(false);
 		return product is null
 			? ResultFactory.Error<GetProductByIdQueryResponse>($"Product not found with Id: {request.ProducId}", 404)

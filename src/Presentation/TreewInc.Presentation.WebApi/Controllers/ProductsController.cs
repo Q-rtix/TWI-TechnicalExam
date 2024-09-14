@@ -5,6 +5,7 @@ using TreewInc.Application.Features.Product.Create;
 using TreewInc.Application.Features.Product.Get;
 using TreewInc.Application.Features.Product.GetById;
 using TreewInc.Application.Features.Product.GetByName;
+using TreewInc.Application.Features.Product.Update;
 
 namespace TreewInc.Presentation.WebApi.Controllers;
 
@@ -66,6 +67,19 @@ public class ProductsController : ControllerBase
 		return result.Match<ActionResult<GetProductsQueryResponse>>(
 			success: response => Ok(response),
 			fail: error => NotFound(error)
+		);
+	}
+	
+	[HttpPut]
+	[ProducesResponseType<UpdateProductCommandResponse>(StatusCodes.Status200OK)]
+	[ProducesResponseType<Error>(StatusCodes.Status400BadRequest)]
+	[ProducesResponseType<Error>(StatusCodes.Status404NotFound)]
+	public async Task<ActionResult<UpdateProductCommandResponse>> UpdateProduct([FromBody] UpdateProductCommand command)
+	{
+		var result = await _mediator.Send(command);
+		return result.Match<ActionResult<UpdateProductCommandResponse>>(
+			success: response => Ok(response),
+			fail: error => BadRequest(error)
 		);
 	}
 }
