@@ -1,0 +1,20 @@
+meta {
+  name: Get Product By Id
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base-url-https}}/api/products/1
+  body: none
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Product 1",
+    "description": "Product 1 description",
+    "price": 10.23,
+    "stock": 100
+  }
+}

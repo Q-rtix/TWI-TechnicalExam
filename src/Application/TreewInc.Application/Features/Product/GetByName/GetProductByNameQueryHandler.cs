@@ -14,9 +14,10 @@ public class GetProductByNameQueryHandler : IHandler<GetProductByNameQuery, GetP
 	public async Task<Result<GetProductByNameQueryResponse>> Handle(GetProductByNameQuery request, CancellationToken cancellationToken)
 	{
 		Expression<Func<Core.Domain.Entities.Product, bool>> filter = p => p.Name.Equals(request.ProductName, StringComparison.CurrentCultureIgnoreCase);
-		var product = await _repository.GetOneAsync([filter], true, cancellationToken);
+		var product = await _repository.GetOneAsync([filter], true, cancellationToken)
+			.ConfigureAwait(false);
 		return product is null 
 			? ResultFactory.Error<GetProductByNameQueryResponse>([$"Product not found with name: {request.ProductName}"], 404) 
-			: ResultFactory.Ok(product.MapToGetProductByNameQueryResponse());
+			: ResultFactory.Ok(new GetProductByNameQueryResponse(product));
 	}
 }

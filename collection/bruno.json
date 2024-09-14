@@ -8,6 +8,6 @@
   ],
   "presets": {
     "requestType": "http",
-    "requestUrl": "https://localhost:7128"
+    "requestUrl": "{{base-url-https}}"
   }
 }

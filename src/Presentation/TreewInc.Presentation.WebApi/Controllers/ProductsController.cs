@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Results.ResultTypes;
 using TreewInc.Application.Features.Product.Create;
+using TreewInc.Application.Features.Product.GetById;
 using TreewInc.Application.Features.Product.GetByName;
 
 namespace TreewInc.Presentation.WebApi.Controllers;
@@ -35,6 +36,20 @@ public class ProductsController : ControllerBase
 		var query = new GetProductByNameQuery(name);
 		var result = await _mediator.Send(query);
 		return result.Match<ActionResult<GetProductByNameQueryResponse>>(
+			success: response => Ok(response),
+			fail: error => NotFound(error)
+		);
+	}
+	
+	[HttpGet("{id:int}")]
+	[ProducesResponseType<GetProductByIdQuery>(StatusCodes.Status200OK)]
+	[ProducesResponseType<Error>(StatusCodes.Status400BadRequest)]
+	[ProducesResponseType<Error>(StatusCodes.Status404NotFound)]
+	public async Task<ActionResult<GetProductByIdQueryResponse>> GetProductById([FromRoute] int id)
+	{
+		var query = new GetProductByIdQuery(id);
+		var result = await _mediator.Send(query);
+		return result.Match<ActionResult<GetProductByIdQueryResponse>>(
 			success: response => Ok(response),
 			fail: error => NotFound(error)
 		);
