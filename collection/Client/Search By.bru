@@ -1,17 +1,22 @@
 meta {
-  name: Get Product By Name
+  name: Search By
   type: http
   seq: 2
 }
 
 get {
-  url: {{base-url-https}}/api/products?name=product 1
+  url: {{base-url-https}}/api/products/search?minPrice=100
   body: none
   auth: none
 }
 
 params:query {
-  name: product 1
+  minPrice: 100
+  ~name: 13
+  ~description: 
+  ~maxPrice: 200
+  ~minStock: 
+  ~maxStock: 
 }
 
 body:json {

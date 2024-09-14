@@ -1,4 +1,4 @@
-﻿using Paging.PagedCollections;
+﻿using Paging;
 using TreewInc.Core.Domain.Entities;
 
 namespace TreewInc.Application.Features.Clients.Get;

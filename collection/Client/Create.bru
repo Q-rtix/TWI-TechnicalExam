@@ -1,0 +1,26 @@
+meta {
+  name: Create
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base-url-https}}/api/clients
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Product {{product-count}}",
+    "description": "Product {{product-count}} description",
+    "price": 300.23,
+    "stock": 100
+  }
+}
+
+tests {
+  let pc = bru.getVar('product-count')
+  pc++
+  bru.setVar('product-count', pc)
+}

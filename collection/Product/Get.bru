@@ -1,0 +1,16 @@
+meta {
+  name: Get
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base-url-https}}/api/products/page?pageNumber=2&pageSize=10
+  body: none
+  auth: none
+}
+
+params:query {
+  pageNumber: 2
+  pageSize: 10
+}

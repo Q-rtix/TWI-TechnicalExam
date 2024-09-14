@@ -80,7 +80,7 @@ public class ProductsController : ControllerBase
 		);
 	}
 
-	[HttpDelete]
+	[HttpDelete("{productId:int}")]
 	[ProducesResponseType(typeof(RemoveProductCommandResponse), StatusCodes.Status200OK)]
 	public async Task<ActionResult<RemoveProductCommandResponse>> RemoveProduct([FromRoute] int productId)
 	{

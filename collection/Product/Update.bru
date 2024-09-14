@@ -1,0 +1,21 @@
+meta {
+  name: Update
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{base-url-https}}/api/products
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id": 13,
+    "name": "Product {{product-count}}",
+    "description": "Product {{product-count}} description",
+    "price": 2.56,
+    "stock": 10
+  }
+}

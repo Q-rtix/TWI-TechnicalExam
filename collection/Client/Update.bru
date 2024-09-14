@@ -1,10 +1,10 @@
 meta {
-  name: Create Product
+  name: Update
   type: http
-  seq: 1
+  seq: 5
 }
 
-post {
+put {
   url: {{base-url-https}}/api/products
   body: json
   auth: none
@@ -12,15 +12,10 @@ post {
 
 body:json {
   {
+    "id": 13,
     "name": "Product {{product-count}}",
     "description": "Product {{product-count}} description",
-    "price": 10.23,
-    "stock": 100
+    "price": 2.56,
+    "stock": 10
   }
-}
-
-tests {
-  let pc = bru.getVar('product-count')
-  pc++
-  bru.setVar('product-count', pc)
 }
