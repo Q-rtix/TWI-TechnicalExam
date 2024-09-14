@@ -15,4 +15,8 @@
 	  <ProjectReference Include="..\..\Core\TreewInc.Core.Infrastructure\TreewInc.Core.Infrastructure.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Controllers\" />
+	</ItemGroup>
+
 </Project>

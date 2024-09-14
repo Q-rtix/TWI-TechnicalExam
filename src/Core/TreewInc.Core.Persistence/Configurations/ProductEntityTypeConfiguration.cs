@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TreewInc.Core.Domain.Entities;
 
@@ -14,12 +15,16 @@ public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
 		builder.ToTable("Products");
 
 		builder.Property(e => e.Name)
+			.IsRequired()
 			.HasMaxLength(150)
 			.IsUnicode(false);
 		builder.Property(e => e.Description)
 			.HasMaxLength(512)
 			.IsUnicode(false);
 		builder.Property(e => e.Price)
+			.IsRequired()
 			.HasColumnType("decimal(18, 2)");
+		builder.Property(e => e.Stock)
+			.IsRequired();
 	}
 }
