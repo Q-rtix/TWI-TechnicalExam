@@ -2,4 +2,4 @@
 
 namespace TreewInc.Application.Features.Product.GetById;
 
-public record GetProductByIdQuery(int ProducId) : IQuery<GetProductByIdQueryResponse>;
+public record GetProductByIdQuery(int ProductId) : IQuery<GetProductByIdQueryResponse>;

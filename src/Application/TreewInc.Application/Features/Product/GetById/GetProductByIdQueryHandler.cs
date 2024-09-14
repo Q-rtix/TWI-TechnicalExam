@@ -12,10 +12,10 @@ public class GetProductByIdQueryHandler : IHandler<GetProductByIdQuery, GetProdu
 	
 	public async Task<Result<GetProductByIdQueryResponse>> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
 	{
-		var product = await _repository.GetOneAsync([p => p.Id == request.ProducId], true, cancellationToken)
+		var product = await _repository.GetOneAsync([p => p.Id == request.ProductId], true, cancellationToken)
 			.ConfigureAwait(false);
 		return product is null
-			? ResultFactory.Error<GetProductByIdQueryResponse>($"Product not found with Id: {request.ProducId}", 404)
+			? ResultFactory.Error<GetProductByIdQueryResponse>($"Product not found with Id: {request.ProductId}", 404)
 			: ResultFactory.Ok(new GetProductByIdQueryResponse(product));
 	}
 }
