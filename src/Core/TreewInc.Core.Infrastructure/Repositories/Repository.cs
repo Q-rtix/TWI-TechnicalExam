@@ -12,7 +12,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
 
 	public Repository(AppDbContext context) => _dbSet = context.Set<TEntity>();
 
-	public IQueryable<TEntity> GetMany(Expression<Func<TEntity, bool>>[]? filters, bool asNoTracking = false, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null)
+	public IQueryable<TEntity> GetMany(Expression<Func<TEntity, bool>>[]? filters = null, bool asNoTracking = false, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null)
 	{
 		IQueryable<TEntity> query = _dbSet;
 

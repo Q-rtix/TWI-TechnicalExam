@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Results.ResultTypes;
 using TreewInc.Application.Features.Product.Create;
+using TreewInc.Application.Features.Product.Get;
 using TreewInc.Application.Features.Product.GetById;
 using TreewInc.Application.Features.Product.GetByName;
 
@@ -50,6 +51,19 @@ public class ProductsController : ControllerBase
 		var query = new GetProductByIdQuery(id);
 		var result = await _mediator.Send(query);
 		return result.Match<ActionResult<GetProductByIdQueryResponse>>(
+			success: response => Ok(response),
+			fail: error => NotFound(error)
+		);
+	}
+	
+	[HttpGet("page")]
+	[ProducesResponseType<GetProductsQueryResponse>(StatusCodes.Status200OK)]
+	[ProducesResponseType<Error>(StatusCodes.Status400BadRequest)]
+	public async Task<ActionResult<GetProductsQueryResponse>> GetProducts([FromQuery] int? pageNumber, [FromQuery] int? pageSize)
+	{
+		var query = new GetProductsQuery(pageNumber ?? 1, pageSize ?? 10);
+		var result = await _mediator.Send(query);
+		return result.Match<ActionResult<GetProductsQueryResponse>>(
 			success: response => Ok(response),
 			fail: error => NotFound(error)
 		);
