@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
@@ -17,10 +18,10 @@ public class RemoveClientCommandHandler : IHandler<RemoveClientCommand, RemoveCl
 		var client = await repo.GetOneAsync([c => c.Id == request.ClientId], cancellationToken: cancellationToken)
 			.ConfigureAwait(false);
 		if (client is null)
-			return ResultFactory.Error<RemoveClientCommandResponse>($"Client not found with Id: {request.ClientId}.", 404);
+			return ResultFactory.Error<RemoveClientCommandResponse>($"Client not found with Id: {request.ClientId}.", StatusCodes.Status400BadRequest);
 		
 		repo.RemoveOne(client);
 		await _unitOfWork.SaveAsync(cancellationToken);
-		return ResultFactory.Ok(new RemoveClientCommandResponse(client.Id));
+		return ResultFactory.Ok(new RemoveClientCommandResponse(client.Id), StatusCodes.Status200OK);
 	}
 }

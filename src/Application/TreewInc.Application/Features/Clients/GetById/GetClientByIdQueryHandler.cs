@@ -1,4 +1,5 @@
-﻿using Results;
+﻿using Microsoft.AspNetCore.Http;
+using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
 using TreewInc.Application.Dtos.Mappers;
@@ -17,7 +18,7 @@ public class GetClientByIdQueryHandler : IHandler<GetClientByIdQuery, GetClientB
 		var client = await _repository.GetOneAsync([c => c.Id == request.ClientId], true, cancellationToken)
 			.ConfigureAwait(false);
 		return client is null 
-			? ResultFactory.Error<GetClientByIdQueryResponse>($"Client not found with Id: {request.ClientId}") 
-			: ResultFactory.Ok(new GetClientByIdQueryResponse(client.MapToClientDto()));
+			? ResultFactory.Error<GetClientByIdQueryResponse>($"Client not found with Id: {request.ClientId}", StatusCodes.Status404NotFound) 
+			: ResultFactory.Ok(new GetClientByIdQueryResponse(client.MapToClientDto()), StatusCodes.Status200OK);
 	}
 }

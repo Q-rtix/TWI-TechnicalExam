@@ -19,6 +19,7 @@ namespace TreewInc.Presentation.WebApi.Controllers;
 [Route("api/[controller]")]
 [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
 [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+[ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
 public class ProductsController : ControllerBase
 {
 	private readonly IMediator _mediator;
@@ -35,7 +36,7 @@ public class ProductsController : ControllerBase
 	/// <param name="command">The command containing product details.</param>
 	/// <returns>A response containing the created product details.</returns>
 	[HttpPost]
-	[ProducesResponseType(typeof(CreateProductCommandResponse), StatusCodes.Status200OK)]
+	[ProducesResponseType(typeof(CreateProductCommandResponse), StatusCodes.Status201Created)]
 	public async Task<ActionResult<CreateProductCommandResponse>> CreateProduct([FromBody] CreateProductCommand command)
 	{
 		var result = await _mediator.Send(command);

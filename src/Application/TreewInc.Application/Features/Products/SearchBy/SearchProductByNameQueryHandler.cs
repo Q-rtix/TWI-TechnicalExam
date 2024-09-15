@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Results;
 using System.Linq.Expressions;
 using TreewInc.Application.Abstractions;
@@ -20,7 +21,7 @@ public class SearchProductByNameQueryHandler : IHandler<SearchProductByNameQuery
 		var product = await _repository.GetMany(filters: filters, asNoTracking: true)
 			.ToListAsync(cancellationToken)
 			.ConfigureAwait(false);
-		return Ok(new SearchProductByNameQueryResponse(product));
+		return Ok(new SearchProductByNameQueryResponse(product), StatusCodes.Status200OK);
 	}
 	
 	private Expression<Func<Product, bool>>[] GetFilters(SearchProductByNameQuery request)

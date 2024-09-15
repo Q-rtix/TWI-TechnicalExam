@@ -1,4 +1,5 @@
-﻿using Paging.Extensions;
+﻿using Microsoft.AspNetCore.Http;
+using Paging.Extensions;
 using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
@@ -15,6 +16,6 @@ public class GetProductsQueryHandler : IHandler<GetProductsQuery, GetProductsQue
 	{
 		var products = _repository.GetMany(asNoTracking: true)
 			.Paginated(request.PageNumber, request.PageSize);
-		return Task.FromResult(ResultFactory.Ok(new GetProductsQueryResponse(products)));
+		return Task.FromResult(ResultFactory.Ok(new GetProductsQueryResponse(products), StatusCodes.Status200OK));
 	}
 }

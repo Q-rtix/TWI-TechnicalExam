@@ -1,4 +1,5 @@
-﻿using Results;
+﻿using Microsoft.AspNetCore.Http;
+using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
 using TreewInc.Core.Domain.Entities;
@@ -17,11 +18,11 @@ public class UpdateClientCommandHandler : IHandler<UpdateClientCommand, UpdateCl
 		var client = await repo.GetOneAsync([c => c.Id == request.Id], cancellationToken: cancellationToken)
 			.ConfigureAwait(false);
 		if (client is null)
-			return ResultFactory.Error<UpdateClientCommandResponse>($"Client not found with Id: {request.Id}.", 404);
+			return ResultFactory.Error<UpdateClientCommandResponse>($"Client not found with Id: {request.Id}.", StatusCodes.Status400BadRequest);
 		
 		client.Update(request.Name, request.Email, request.Phone);
 		repo.UpdateOne(client);
 		await _unitOfWork.SaveAsync(cancellationToken);
-		return ResultFactory.Ok(new UpdateClientCommandResponse(client.Id));
+		return ResultFactory.Ok(new UpdateClientCommandResponse(client.Id), StatusCodes.Status200OK);
 	}
 }

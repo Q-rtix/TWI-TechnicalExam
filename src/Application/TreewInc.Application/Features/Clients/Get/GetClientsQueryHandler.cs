@@ -1,4 +1,5 @@
-﻿using Paging.Extensions;
+﻿using Microsoft.AspNetCore.Http;
+using Paging.Extensions;
 using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
@@ -18,6 +19,6 @@ public class GetClientsQueryHandler : IHandler<GetClientsQuery, GetClientsQueryR
 		var clients = _repository.GetMany(asNoTracking: true)
 			.Select(c => c.MapToClientDto())
 			.Paginated(request.PageNumber, request.PageSize);
-		return Task.FromResult(ResultFactory.Ok(new GetClientsQueryResponse(clients)));
+		return Task.FromResult(ResultFactory.Ok(new GetClientsQueryResponse(clients), StatusCodes.Status200OK));
 	}
 }

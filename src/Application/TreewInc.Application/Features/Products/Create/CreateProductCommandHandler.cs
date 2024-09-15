@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
@@ -17,6 +18,6 @@ public class CreateProductCommandHandler : IHandler<CreateProductCommand, Create
 			.AddOneAsync(product, cancellationToken)
 			.ConfigureAwait(false);
 		await _unitOfWork.SaveAsync(cancellationToken);
-		return ResultFactory.Ok(new CreateProductCommandResponse(product.Id));
+		return ResultFactory.Ok(new CreateProductCommandResponse(product.Id), StatusCodes.Status201Created);
 	}
 }

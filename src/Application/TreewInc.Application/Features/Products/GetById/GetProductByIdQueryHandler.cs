@@ -1,4 +1,5 @@
-﻿using Results;
+﻿using Microsoft.AspNetCore.Http;
+using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
 
@@ -15,7 +16,7 @@ public class GetProductByIdQueryHandler : IHandler<GetProductByIdQuery, GetProdu
 		var product = await _repository.GetOneAsync([p => p.Id == request.ProductId], true, cancellationToken)
 			.ConfigureAwait(false);
 		return product is null
-			? ResultFactory.Error<GetProductByIdQueryResponse>($"Product not found with Id: {request.ProductId}", 404)
-			: ResultFactory.Ok(new GetProductByIdQueryResponse(product));
+			? ResultFactory.Error<GetProductByIdQueryResponse>($"Product not found with Id: {request.ProductId}", StatusCodes.Status404NotFound)
+			: ResultFactory.Ok(new GetProductByIdQueryResponse(product), StatusCodes.Status200OK);
 	}
 }

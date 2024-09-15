@@ -13,6 +13,7 @@ namespace TreewInc.Presentation.WebApi.Controllers;
 [Authorize]
 [Route("api/[controller]")]
 [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
+[ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
 public class AuthController : ControllerBase
 {
 	private readonly IMediator _mediator;

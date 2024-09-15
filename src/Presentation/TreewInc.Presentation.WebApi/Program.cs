@@ -11,6 +11,7 @@ using TreewInc.Core.Persistence.Contexts;
 using TreewInc.Core.Persistence.DateSeeds;
 using TreewInc.Core.Persistence.Extensions;
 using TreewInc.Presentation.WebApi.Configurations.Jwt;
+using TreewInc.Presentation.WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -89,6 +90,8 @@ else
 	
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<InternalServerErrorMiddleware>();
 
 app.UseAuthentication();
 app.UseAuthorization();

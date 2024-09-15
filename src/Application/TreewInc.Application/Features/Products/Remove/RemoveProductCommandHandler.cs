@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
@@ -15,10 +16,10 @@ public class RemoveProductCommandHandler : IHandler<RemoveProductCommand, Remove
 		var repo = _unitOfWork.Repository<Core.Domain.Entities.Product>();
 		var product = await repo.GetOneAsync([p => p.Id == request.ProductId], cancellationToken: cancellationToken);
 		if (product is null)
-			return ResultFactory.Error<RemoveProductCommandResponse>("Product not found", 404);
+			return ResultFactory.Error<RemoveProductCommandResponse>("Product not found", StatusCodes.Status400BadRequest);
 		
 		repo.RemoveOne(product);
 		await _unitOfWork.SaveAsync(cancellationToken);
-		return ResultFactory.Ok(new RemoveProductCommandResponse(product.Id));
+		return ResultFactory.Ok(new RemoveProductCommandResponse(product.Id), StatusCodes.Status200OK);
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Results;
 using Results.ResultTypes;
 using TreewInc.Application.Features.Clients.Create;
 using TreewInc.Application.Features.Clients.Get;
@@ -19,6 +20,7 @@ namespace TreewInc.Presentation.WebApi.Controllers;
 [Route("api/[controller]")]
 [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
 [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
+[ProducesResponseType(typeof(Error), StatusCodes.Status500InternalServerError)]
 public class ClientsController : ControllerBase
 {
 	private readonly IMediator _mediator;
@@ -36,14 +38,15 @@ public class ClientsController : ControllerBase
 	/// <returns>A response containing the created client details.</returns>
 	[HttpPost]
 	[AllowAnonymous]
-	[ProducesResponseType(typeof(CreateClientCommandResponse), StatusCodes.Status200OK)]
-	public async Task<ActionResult<CreateClientCommandResponse>> CreateClient([FromBody] CreateClientCommand command)
+	[ProducesResponseType(typeof(CreateClientCommandResponse), StatusCodes.Status201Created)]
+	public async Task<Result<CreateClientCommandResponse>> CreateClient([FromBody] CreateClientCommand command)
 	{
 		var result = await _mediator.Send(command);
-		return result.Match<ActionResult<CreateClientCommandResponse>>(
+		return result;
+		/*return result.Match<ActionResult<CreateClientCommandResponse>>(
 			success: response => Ok(response),
 			fail: error => BadRequest(error)
-		);
+		);*/
 	}
 	
 	/// <summary>

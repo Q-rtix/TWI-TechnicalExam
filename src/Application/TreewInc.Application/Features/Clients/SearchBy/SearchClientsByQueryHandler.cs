@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Results;
 using System.Linq.Expressions;
 using TreewInc.Application.Abstractions;
@@ -21,7 +22,7 @@ public class SearchClientsByQueryHandler : IHandler<SearchClientsByQuery, Search
 			.Select(c => c.MapToClientDto())
 			.ToListAsync(cancellationToken: cancellationToken)
 			.ConfigureAwait(false);
-		return ResultFactory.Ok(new SearchClientsByQueryResponse(clients));
+		return ResultFactory.Ok(new SearchClientsByQueryResponse(clients), StatusCodes.Status200OK);
 	}
 	
 	private static Expression<Func<Client, bool>>[] GetFilters(SearchClientsByQuery request)

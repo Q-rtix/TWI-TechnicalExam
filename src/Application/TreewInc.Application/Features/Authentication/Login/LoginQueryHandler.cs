@@ -1,4 +1,5 @@
-﻿using Results;
+﻿using Microsoft.AspNetCore.Http;
+using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Auth;
 using TreewInc.Application.Abstractions.Messaging;
@@ -23,12 +24,12 @@ public class LoginQueryHandler : IHandler<LoginQuery, LoginQueryResponse>
 		var client = await _repository.GetOneAsync([c => c.Email == request.Email], true, cancellationToken)
 			.ConfigureAwait(false);
 		if (client is null)
-			return ResultFactory.Error<LoginQueryResponse>("Does not exist a client with the provided email.");
+			return ResultFactory.Error<LoginQueryResponse>("Does not exist a client with the provided email.", StatusCodes.Status400BadRequest);
 		
 		if (!PassHelper.VerifyPassword(request.Password, client.Password))
-			return ResultFactory.Error<LoginQueryResponse>("Invalid password.");
+			return ResultFactory.Error<LoginQueryResponse>("Invalid password.", StatusCodes.Status400BadRequest);
 
 		var token = _jwtHandler.Generate(client.Email);
-		return ResultFactory.Ok(new LoginQueryResponse(token));
+		return ResultFactory.Ok(new LoginQueryResponse(token), StatusCodes.Status200OK);
 	}
 }
