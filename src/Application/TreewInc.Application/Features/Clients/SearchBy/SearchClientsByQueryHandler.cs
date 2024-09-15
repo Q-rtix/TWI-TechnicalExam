@@ -3,6 +3,7 @@ using Results;
 using System.Linq.Expressions;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
+using TreewInc.Application.Dtos.Mappers;
 using TreewInc.Core.Domain.Entities;
 
 namespace TreewInc.Application.Features.Clients.SearchBy;
@@ -17,6 +18,7 @@ public class SearchClientsByQueryHandler : IHandler<SearchClientsByQuery, Search
 	{
 		var filters = GetFilters(request);
 		var clients = await _repository.GetMany(filters: filters, asNoTracking: true)
+			.Select(c => c.MapToClientDto())
 			.ToListAsync(cancellationToken: cancellationToken)
 			.ConfigureAwait(false);
 		return ResultFactory.Ok(new SearchClientsByQueryResponse(clients));

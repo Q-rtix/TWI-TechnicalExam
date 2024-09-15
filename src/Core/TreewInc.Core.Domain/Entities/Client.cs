@@ -7,17 +7,19 @@ public class Client : Entity
 	[Obsolete("Parameterless constructors are for EF use only")]
 	public Client() => Sales = new HashSet<Sale>();
 	
-	public Client(Name name, string email, PhoneNumber phone, ICollection<Sale>? sales = null)
+	public Client(Name name, string email, PhoneNumber phone, string passwordHash, ICollection<Sale>? sales = null)
 	{
 		Name = name;
 		Email = email;
 		Phone = phone;
 		Sales = sales ?? new HashSet<Sale>();
+		Password = passwordHash;
 	}
 
 	public Name Name { get; private set; }
 	public string Email { get; private set; }
 	public PhoneNumber Phone { get; private set; }
+	public string Password { get; private set; }
 
 	public ICollection<Sale> Sales { get; private set; }
 

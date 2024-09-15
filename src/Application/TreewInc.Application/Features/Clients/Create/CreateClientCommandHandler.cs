@@ -1,6 +1,7 @@
 ﻿using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
+using TreewInc.Application.Helpers;
 using TreewInc.Core.Domain.Entities;
 
 namespace TreewInc.Application.Features.Clients.Create;
@@ -13,7 +14,7 @@ public class CreateClientCommandHandler : IHandler<CreateClientCommand, CreateCl
 
 	public async Task<Result<CreateClientCommandResponse>> Handle(CreateClientCommand request, CancellationToken cancellationToken)
 	{
-		var client = new Client(request.Name, request.Email, request.Phone);
+		var client = new Client(request.Name, request.Email, request.Phone, PassHelper.HashPassword(request.Password));
 		await _unitOfWork.Repository<Client>()
 			.AddOneAsync(client, cancellationToken)
 			.ConfigureAwait(false);

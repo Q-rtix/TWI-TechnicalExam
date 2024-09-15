@@ -14,5 +14,9 @@ public class CreateClientCommandValidator : AbstractValidator<CreateClientComman
 			.SetValidator(new NameValidator());
 		RuleFor(x => x.Phone)
 			.SetValidator(new PhoneNumberValidator());
+		RuleFor(x => x.Password)
+			.NotEmpty().NotNull().WithMessage("Password is required")
+			.Matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$")
+			.WithMessage("Password must contain at least 8 characters, one uppercase letter, one lowercase letter and one number.");
 	}
 }

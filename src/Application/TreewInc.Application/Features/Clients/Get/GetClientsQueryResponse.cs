@@ -1,6 +1,6 @@
 ﻿using Paging;
-using TreewInc.Core.Domain.Entities;
+using TreewInc.Application.Dtos;
 
 namespace TreewInc.Application.Features.Clients.Get;
 
-public record GetClientsQueryResponse(PagedList<Client> Clients);
+public record GetClientsQueryResponse(PagedList<ClientDto> Clients);

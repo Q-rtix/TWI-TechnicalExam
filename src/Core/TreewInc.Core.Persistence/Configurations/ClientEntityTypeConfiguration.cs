@@ -27,6 +27,10 @@ public class ClientEntityTypeConfiguration : IEntityTypeConfiguration<Client>
 			.HasConversion(type => PhoneToString(type), str => StringToPhoneNumber(str))
 			.HasColumnName("PhoneNumber")
 			.HasMaxLength(15);
+		builder.Property(e => e.Password)
+			.IsRequired()
+			.HasMaxLength(50)
+			.IsUnicode(false);
 		builder.HasMany(client => client.Sales)
 			.WithOne(sale => sale.Client)
 			.HasForeignKey(sale => sale.ClientId);

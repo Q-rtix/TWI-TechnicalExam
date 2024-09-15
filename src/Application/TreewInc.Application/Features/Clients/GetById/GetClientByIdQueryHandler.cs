@@ -1,6 +1,7 @@
 ﻿using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
+using TreewInc.Application.Dtos.Mappers;
 using TreewInc.Core.Domain.Entities;
 
 namespace TreewInc.Application.Features.Clients.GetById;
@@ -17,6 +18,6 @@ public class GetClientByIdQueryHandler : IHandler<GetClientByIdQuery, GetClientB
 			.ConfigureAwait(false);
 		return client is null 
 			? ResultFactory.Error<GetClientByIdQueryResponse>($"Client not found with Id: {request.ClientId}") 
-			: ResultFactory.Ok(new GetClientByIdQueryResponse(client));
+			: ResultFactory.Ok(new GetClientByIdQueryResponse(client.MapToClientDto()));
 	}
 }
