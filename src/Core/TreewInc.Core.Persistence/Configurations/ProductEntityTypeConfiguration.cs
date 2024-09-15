@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TreewInc.Core.Domain.Entities;
+using TreewInc.Core.Persistence.DateSeeds;
 
 namespace TreewInc.Core.Persistence.Configurations;
 
@@ -28,5 +29,7 @@ public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
 		builder.HasMany(product => product.Sales)
 			.WithOne(sale => sale.Product)
 			.HasForeignKey(sale => sale.ProductId);
+		
+		builder.Seed();
 	}
 }

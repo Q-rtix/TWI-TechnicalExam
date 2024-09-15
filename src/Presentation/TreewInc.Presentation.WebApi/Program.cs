@@ -7,11 +7,14 @@ using TreewInc.Application;
 using TreewInc.Application.Settings;
 using TreewInc.Core.Infrastructure;
 using TreewInc.Core.Persistence;
+using TreewInc.Core.Persistence.Contexts;
+using TreewInc.Core.Persistence.DateSeeds;
+using TreewInc.Core.Persistence.Extensions;
 using TreewInc.Presentation.WebApi.Configurations.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddPersistence(builder.Configuration)
+builder.Services.AddPersistence(builder.Configuration, builder.Environment)
 	.AddInfrastructure()
 	.AddApplication()
 	.AddControllers();
@@ -61,8 +64,8 @@ builder.Services.AddEndpointsApiExplorer()
 						Id = "Bearer"
 					}
 				},
-				new string[] { }
-			}
+                Array.Empty<string>()
+            }
 		});
 		var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 		var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -71,11 +74,19 @@ builder.Services.AddEndpointsApiExplorer()
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Testing"))
 {
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
+if (!app.Environment.IsEnvironment("Testing"))
+	app.ApplyMigrations();
+else
+{
+	using var context = app.Services.GetRequiredService<AppDbContext>();
+	context.SeedInMemory();
+}
+	
 
 app.UseHttpsRedirection();
 

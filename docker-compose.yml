@@ -13,7 +13,7 @@
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=pass1234
     ports:
-      - "1434:1433"
+      - "1433:1433"
     volumes:
       - treewinc-exam-sqlserver-vol:/var/opt/mssql
 

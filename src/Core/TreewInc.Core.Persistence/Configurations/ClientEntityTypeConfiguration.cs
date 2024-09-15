@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TreewInc.Core.Domain.Entities;
 using TreewInc.Core.Domain.Models;
+using TreewInc.Core.Persistence.DateSeeds;
 
 namespace TreewInc.Core.Persistence.Configurations;
 
@@ -34,6 +35,8 @@ public class ClientEntityTypeConfiguration : IEntityTypeConfiguration<Client>
 		builder.HasMany(client => client.Sales)
 			.WithOne(sale => sale.Client)
 			.HasForeignKey(sale => sale.ClientId);
+		
+		builder.Seed();
 	}
 
 	private static string NameToString(Name name)
