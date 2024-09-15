@@ -6,6 +6,9 @@ using TreewInc.Application.Features.Sales.Create;
 
 namespace TreewInc.Presentation.WebApi.Controllers;
 
+/// <summary>
+/// Controller for handling sales-related operations.
+/// </summary>
 [ApiController]
 [Authorize]
 [Route("api/[controller]")]
@@ -15,8 +18,17 @@ public class SalesController : ControllerBase
 {
 	private readonly IMediator _mediator;
 
+	/// <summary>
+	/// Initializes a new instance of the <see cref="SalesController"/> class.
+	/// </summary>
+	/// <param name="mediator">The mediator instance for handling requests.</param>
 	public SalesController(IMediator mediator) => _mediator = mediator;
 
+	/// <summary>
+	/// Creates a new sale.
+	/// </summary>
+	/// <param name="command">The command containing sale details.</param>
+	/// <returns>A response containing the created sale details.</returns>
 	[HttpPost]
 	[ProducesResponseType(typeof(CreateSaleCommandResponse), StatusCodes.Status200OK)]
 	public async Task<ActionResult<CreateSaleCommandResponse>> CreateSale([FromBody] CreateSaleCommand command)
