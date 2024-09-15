@@ -19,6 +19,13 @@
 	  <PackageReference Include="Qrtix.Paging" Version="1.0.3" />
 	  <PackageReference Include="Qrtix.Results" Version="2.1.0" />
 	  <PackageReference Include="Riok.Mapperly" Version="3.6.0" />
+	  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.35.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+	    <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\8.0.5\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 </Project>
