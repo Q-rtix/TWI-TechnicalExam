@@ -14,7 +14,7 @@ public class UpdateProductCommandValidator : AbstractValidator<UpdateProductComm
 			.MaximumLength(512).WithMessage("The description must not exceed 512 characters.");
 		RuleFor(x => x.Price)
 			.GreaterThan(0).WithMessage("The price must be greater than 0.")
-			.PrecisionScale(20, 2, false).WithMessage("The price must have a maximum of 18 digits and 2 decimals.");
+			.PrecisionScale(18, 2, false).WithMessage("The price must have a maximum of 18 digits and 2 decimals.");
 		RuleFor(x => x.Stock)
 			.NotNull().WithMessage("The stock is required.")
 			.GreaterThanOrEqualTo(0).WithMessage("The stock must be greater than or equal to 0.");

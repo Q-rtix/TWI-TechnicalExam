@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TreewInc.Core.Domain.Entities;
 
@@ -26,5 +25,8 @@ public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
 			.HasColumnType("decimal(18, 2)");
 		builder.Property(e => e.Stock)
 			.IsRequired();
+		builder.HasMany(product => product.Sales)
+			.WithOne(sale => sale.Product)
+			.HasForeignKey(sale => sale.ProductId);
 	}
 }

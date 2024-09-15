@@ -1,15 +1,17 @@
-﻿using TreewInc.Core.Domain.Models;
+﻿namespace TreewInc.Core.Domain.Entities;
 
-namespace TreewInc.Core.Domain.Entities;
-
-public sealed class Product : Entity
+public class Product : Entity
 {
-	public Product(string name, string description, decimal price, int stock)
+	[Obsolete("Parameterless constructors are for EF use only")]
+	public Product() => Sales = new HashSet<Sale>();
+	
+	public Product(string name, string description, decimal price, int stock, ICollection<Sale>? sales = null)
 	{
 		Name = name;
 		Description = description;
 		Price = price;
 		Stock = stock;
+		Sales = sales ?? new HashSet<Sale>();
 	}
 
 	public string Name { get; private set; }
@@ -17,11 +19,14 @@ public sealed class Product : Entity
 	public decimal Price { get; private set; }
 	public int Stock { get; private set; }
 
-	public void Update(string name, string? description, decimal price, int stock)
+	public ICollection<Sale>? Sales { get; private set; }
+
+	public void Update(string name, string? description, decimal price, int stock, ICollection<Sale>? sales = null)
 	{
 		Name = name;
 		Description = description ?? string.Empty;
 		Price = price;
 		Stock = stock;
+		Sales = sales ?? new HashSet<Sale>();
 	}
 }
