@@ -16,3 +16,8 @@ body:json {
     "password": "Root1234"
   }
 }
+
+script:post-response {
+  var token = res.body.token
+  bru.setEnvVar('access-token',token)
+}

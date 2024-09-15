@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Results.ResultTypes;
 using TreewInc.Application.Features.Sales.Create;
@@ -6,6 +7,7 @@ using TreewInc.Application.Features.Sales.Create;
 namespace TreewInc.Presentation.WebApi.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
 [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using TreewInc.Application;
@@ -22,8 +23,8 @@ ArgumentNullException.ThrowIfNull(jwtSettings, nameof(JwtSettings));
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 	.AddJwtBearer(config => config.TokenValidationParameters = new TokenValidationParameters
 	{
-		ValidIssuers = jwtSettings.Issuers,
-		ValidAudiences = jwtSettings.Audiences,
+		ValidIssuer = jwtSettings.Issuer,
+		ValidAudience = jwtSettings.Audience,
 		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey)),
 		ValidateIssuer = true,
 		ValidateAudience = true,
@@ -43,6 +44,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

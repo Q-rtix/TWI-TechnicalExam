@@ -1,6 +1,8 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Results.ResultTypes;
+using System.Diagnostics.CodeAnalysis;
 using TreewInc.Application.Features.Clients.Create;
 using TreewInc.Application.Features.Clients.Get;
 using TreewInc.Application.Features.Clients.GetById;
@@ -11,6 +13,7 @@ using TreewInc.Application.Features.Clients.Update;
 namespace TreewInc.Presentation.WebApi.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
 [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
@@ -21,6 +24,7 @@ public class ClientsController : ControllerBase
 	public ClientsController(IMediator mediator) => _mediator = mediator;
 
 	[HttpPost]
+	[AllowAnonymous]
 	[ProducesResponseType(typeof(CreateClientCommandResponse), StatusCodes.Status200OK)]
 	public async Task<ActionResult<CreateClientCommandResponse>> CreateClient([FromBody] CreateClientCommand command)
 	{

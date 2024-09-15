@@ -2,9 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using TreewInc.Application.Abstractions.Auth;
 using TreewInc.Application.Behaviors;
-using TreewInc.Application.Services.Auth;
 
 namespace TreewInc.Application;
 
@@ -19,7 +17,6 @@ public static class DependencyInjection
 
 		services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
 		services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly(), includeInternalTypes: true);
-		services.AddScoped<IJwtHandler, JwtHandler>();
 
 		return services;
 	}

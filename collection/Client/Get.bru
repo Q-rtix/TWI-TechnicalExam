@@ -7,10 +7,14 @@ meta {
 get {
   url: {{base-url-https}}/api/clients?pageNumber=1&pageSize=10
   body: none
-  auth: none
+  auth: bearer
 }
 
 params:query {
   pageNumber: 1
   pageSize: 10
+}
+
+auth:bearer {
+  token: {{access-token}}
 }

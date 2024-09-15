@@ -6,7 +6,7 @@ using System.Text;
 using TreewInc.Application.Abstractions.Auth;
 using TreewInc.Application.Settings;
 
-namespace TreewInc.Application.Services.Auth;
+namespace TreewInc.Core.Infrastructure.Services.Auth;
 
 public class JwtHandler : IJwtHandler
 {
@@ -17,11 +17,14 @@ public class JwtHandler : IJwtHandler
 	public string Generate(string email)
 	{
 		List<Claim> claims = [new Claim(JwtRegisteredClaimNames.Email, email)];
-		claims.AddRange(_jwtSettings.Issuers.Select(i => new Claim(JwtRegisteredClaimNames.Iss, i)));
-		claims.AddRange(_jwtSettings.Audiences.Select(a => new Claim(JwtRegisteredClaimNames.Aud, a)));
 		var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.SecretKey));
 		var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-		var token = new JwtSecurityToken(claims: claims, signingCredentials: credentials, expires: DateTime.UtcNow.AddMinutes(60));
+		var token = new JwtSecurityToken(
+			issuer: _jwtSettings.Issuer,
+			audience: _jwtSettings.Audience,
+			claims: claims, 
+			signingCredentials: credentials, 
+			expires: DateTime.UtcNow.AddMinutes(60));
 		return new JwtSecurityTokenHandler().WriteToken(token);
 	}
 }

@@ -7,7 +7,11 @@ meta {
 get {
   url: {{base-url-https}}/api/clients/1
   body: none
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{access-token}}
 }
 
 body:json {
