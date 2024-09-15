@@ -32,7 +32,7 @@ public class ClientEntityTypeConfiguration : IEntityTypeConfiguration<Client>
 			.HasMaxLength(15);
 		builder.Property(e => e.Password)
 			.IsRequired()
-			.HasMaxLength(50)
+			.HasMaxLength(80)
 			.IsUnicode(false);
 		builder.HasMany(client => client.Sales)
 			.WithOne(sale => sale.Client)

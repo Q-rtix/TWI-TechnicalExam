@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.Runtime.CompilerServices;
 using TreewInc.Core.Domain.Entities;
+using TreewInc.Core.Domain.Helpers;
 using TreewInc.Core.Domain.Models;
 using TreewInc.Core.Persistence.Contexts;
 
@@ -24,7 +25,7 @@ internal static class ClientDataSeed
 				var split = phone.Split(' ');
 				return new PhoneNumber(split[0], split[1]);
 			})
-			.RuleFor(c => c.Password, _ => "Pass1234");
+			.RuleFor(c => c.Password, _ => PassHelper.HashPassword("Pass1234"));
 	}
 	
 	public static void Seed(this EntityTypeBuilder<Client> entity)

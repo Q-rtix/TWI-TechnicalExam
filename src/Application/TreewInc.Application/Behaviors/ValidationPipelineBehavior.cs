@@ -20,11 +20,11 @@ public class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineBehavior
 		if (!_validators.Any())
 			return await next();
 
-		var errors = _validators.Select(validator => validator.Validate(request))
+		var validations = await Task.WhenAll(_validators.Select(validator => validator.ValidateAsync(request, cancellationToken)));
+		var errors = validations
 			.SelectMany(validationResult => validationResult.Errors)
 			.Where(validationFailure => validationFailure is not null)
 			.Select(failure => new ValidationError(failure.PropertyName, failure.ErrorMessage))
-			.Distinct()
 			.ToList();
 		
 		if (errors.Count == 0)

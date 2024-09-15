@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TreewInc.Core.Persistence.Contexts;
 
@@ -11,9 +12,11 @@ using TreewInc.Core.Persistence.Contexts;
 namespace TreewInc.Core.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240915205043_AddSeeds")]
+    partial class AddSeeds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,9 +47,9 @@ namespace TreewInc.Core.Persistence.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(80)
+                        .HasMaxLength(50)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(80)");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
@@ -62,81 +65,81 @@ namespace TreewInc.Core.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            Email = "Marco45@gmail.com",
-                            Name = "Nettie Streich",
-                            Password = "$2a$11$QcYNwvXh8Aq5cgs48kX/nOS9BkUbkZJ.eV6kA1bNeEr.ASEZudmOi",
+                            Email = "Adriana.Rolfson@yahoo.com",
+                            Name = "Amira Crooks",
+                            Password = "Pass1234",
                             Phone = "1 7691651548"
                         },
                         new
                         {
                             Id = 2,
-                            Email = "Keenan.Casper95@hotmail.com",
-                            Name = "Mylene Blanche Beatty",
-                            Password = "$2a$11$zsVPE4dtzSuBJ8MwfwXesemIIEYkMZ4nZPD9HoDYhDgyW5sKegKYW",
+                            Email = "Telly_Renner40@hotmail.com",
+                            Name = "Maeve Jovanny Trantow",
+                            Password = "Pass1234",
                             Phone = "1 7691651548"
                         },
                         new
                         {
                             Id = 3,
-                            Email = "Dangelo.Altenwerth36@yahoo.com",
-                            Name = "Katlyn Considine",
-                            Password = "$2a$11$Z00KYCOM83BxgWZ/4bKPceb6.rAF/Pzq4uCQw6OF9N2rGZG1SJozW",
+                            Email = "Magdalena_Ullrich@yahoo.com",
+                            Name = "Dina Dooley",
+                            Password = "Pass1234",
                             Phone = "1 7691651548"
                         },
                         new
                         {
                             Id = 4,
-                            Email = "Doug_Mills@gmail.com",
-                            Name = "Katarina Derick Rosenbaum",
-                            Password = "$2a$11$kVQM6wZOf/HadquvxcXVq.gLkSnwW0h.5lXIWeu1VYSQ58/Si/KFe",
+                            Email = "Torrey_Powlowski90@gmail.com",
+                            Name = "Issac Bailey",
+                            Password = "Pass1234",
                             Phone = "1 7691651548"
                         },
                         new
                         {
                             Id = 5,
-                            Email = "Laron_Hammes@gmail.com",
-                            Name = "Gus Pasquale Senger",
-                            Password = "$2a$11$ESrcWEnW3KRw4z7/PZGixufzVRL30bf.lI2BEel9FyLl5QzD6keGW",
+                            Email = "Lyla55@gmail.com",
+                            Name = "Kasey Price",
+                            Password = "Pass1234",
                             Phone = "1 7691651548"
                         },
                         new
                         {
                             Id = 6,
-                            Email = "Eda_Haley@yahoo.com",
-                            Name = "Asia Considine",
-                            Password = "$2a$11$SzWIdYmDVrHqCAqiWofSK.Yh5dmsZiggglAP10NhirxjvoVsa/A2m",
+                            Email = "Millie14@gmail.com",
+                            Name = "Alisha Schroeder",
+                            Password = "Pass1234",
                             Phone = "1 7691651548"
                         },
                         new
                         {
                             Id = 7,
-                            Email = "Keenan34@gmail.com",
-                            Name = "Lauretta Lowell Jerde",
-                            Password = "$2a$11$gPkoSSpB1lpD6poCmca30O9HkuQO./2akYGTPbXkWwXewlOtGRKx.",
+                            Email = "Tyshawn86@gmail.com",
+                            Name = "Delbert Schaefer",
+                            Password = "Pass1234",
                             Phone = "1 7691651548"
                         },
                         new
                         {
                             Id = 8,
-                            Email = "Leta.Runolfsdottir@hotmail.com",
-                            Name = "Zelma Adell Marks",
-                            Password = "$2a$11$iwpg2uC8gh4IpvR7Jz56x.fjMJq7eVh7U45rVFX7r.flB//neNWfm",
+                            Email = "Emmalee_Feil@gmail.com",
+                            Name = "Helene Ephraim Turner",
+                            Password = "Pass1234",
                             Phone = "1 7691651548"
                         },
                         new
                         {
                             Id = 9,
-                            Email = "Willa42@yahoo.com",
-                            Name = "Graciela Zane Howell",
-                            Password = "$2a$11$mX5XthMdcx7Zi0eSkrgrPObsUutJ6OT7ZuuYsSR1it07PMb26p.q2",
+                            Email = "Bryon.Muller@gmail.com",
+                            Name = "Merlin Heath Beahan",
+                            Password = "Pass1234",
                             Phone = "1 7691651548"
                         },
                         new
                         {
                             Id = 10,
-                            Email = "Leda.Jenkins@hotmail.com",
-                            Name = "Damon Tromp",
-                            Password = "$2a$11$mCluNsKgXtGZkRJ6GL/2RezdU1/25VWft.r94qeA.qLV3NG.2xSMS",
+                            Email = "Jaime_Streich21@gmail.com",
+                            Name = "Jesse Ullrich",
+                            Password = "Pass1234",
                             Phone = "1 7691651548"
                         });
                 });
@@ -175,82 +178,82 @@ namespace TreewInc.Core.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Ducimus aperiam et dolores ut.",
-                            Name = "Handcrafted Metal Mouse",
-                            Price = 454.41m,
-                            Stock = 41
+                            Description = "Unde sapiente veniam vero delectus ex.",
+                            Name = "Fantastic Fresh Chips",
+                            Price = 285.28m,
+                            Stock = 4
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Voluptatem soluta sapiente sit et est eius velit ea.",
-                            Name = "Generic Cotton Pizza",
-                            Price = 105.89m,
-                            Stock = 14
+                            Description = "Facilis voluptatem ipsum quasi facere.",
+                            Name = "Tasty Frozen Tuna",
+                            Price = 537.14m,
+                            Stock = 18
                         },
                         new
                         {
                             Id = 3,
-                            Description = "Sed laboriosam quia enim hic recusandae saepe consequatur natus.",
-                            Name = "Unbranded Steel Bacon",
-                            Price = 645.18m,
-                            Stock = 50
+                            Description = "Quia vitae dolor rerum aut qui ullam ut fugit.",
+                            Name = "Sleek Concrete Gloves",
+                            Price = 261.35m,
+                            Stock = 66
                         },
                         new
                         {
                             Id = 4,
-                            Description = "Voluptas quia harum fugit.",
-                            Name = "Handmade Rubber Chair",
-                            Price = 570.37m,
-                            Stock = 30
+                            Description = "Illo adipisci eos facere placeat.",
+                            Name = "Sleek Steel Gloves",
+                            Price = 867.74m,
+                            Stock = 78
                         },
                         new
                         {
                             Id = 5,
-                            Description = "Ipsa voluptas rerum voluptas facere officiis beatae esse voluptates iusto.",
-                            Name = "Tasty Plastic Tuna",
-                            Price = 977.19m,
-                            Stock = 41
+                            Description = "Ipsum iusto aut suscipit autem voluptatem et nemo.",
+                            Name = "Awesome Metal Gloves",
+                            Price = 271.70m,
+                            Stock = 86
                         },
                         new
                         {
                             Id = 6,
-                            Description = "Labore voluptatem ab.",
-                            Name = "Licensed Granite Table",
-                            Price = 576.20m,
-                            Stock = 22
+                            Description = "Occaecati aut earum ratione qui.",
+                            Name = "Awesome Concrete Chicken",
+                            Price = 909.99m,
+                            Stock = 83
                         },
                         new
                         {
                             Id = 7,
-                            Description = "Necessitatibus beatae magnam fuga.",
-                            Name = "Incredible Plastic Chips",
-                            Price = 852.78m,
-                            Stock = 40
+                            Description = "Omnis recusandae aliquam quasi voluptate minima eveniet.",
+                            Name = "Generic Soft Mouse",
+                            Price = 546.26m,
+                            Stock = 27
                         },
                         new
                         {
                             Id = 8,
-                            Description = "Earum delectus est dolores.",
-                            Name = "Generic Granite Table",
-                            Price = 731.81m,
-                            Stock = 85
+                            Description = "Modi vitae illo inventore iste.",
+                            Name = "Refined Cotton Chicken",
+                            Price = 310.49m,
+                            Stock = 25
                         },
                         new
                         {
                             Id = 9,
-                            Description = "Ad laborum eum veritatis.",
-                            Name = "Rustic Plastic Towels",
-                            Price = 905.61m,
-                            Stock = 33
+                            Description = "Tempora voluptate repudiandae.",
+                            Name = "Generic Fresh Bike",
+                            Price = 491.21m,
+                            Stock = 26
                         },
                         new
                         {
                             Id = 10,
-                            Description = "Porro architecto occaecati consequatur et facere.",
-                            Name = "Tasty Cotton Table",
-                            Price = 686.78m,
-                            Stock = 67
+                            Description = "Molestiae ea sit.",
+                            Name = "Awesome Granite Pants",
+                            Price = 651.94m,
+                            Stock = 93
                         });
                 });
 
