@@ -1,4 +1,4 @@
-﻿namespace TreewInc.Application.Helpers;
+﻿namespace TreewInc.Core.Domain.Helpers;
 
 public static class PassHelper
 {

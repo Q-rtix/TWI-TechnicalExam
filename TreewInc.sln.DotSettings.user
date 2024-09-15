@@ -1,0 +1,10 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0f1376e5_002D27de_002D47d1_002D9105_002D8e604a85d594/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Handle_ShouldCreateClient_WhenCommandIsValid" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::B9708EC3-8950-4AC8-8D16-3899831C87E5::net8.0::TreewInc.Application.Tests.Features.Clients.Create.CreateClientCommandHandlerTest.Handle_ShouldCreateClient_WhenCommandIsValid&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B9708EC3-8950-4AC8-8D16-3899831C87E5::net8.0::TreewInc.Application.Tests.Features.Clients.Create.CreateClientCommandHandlerTest.Handle_ShouldReturnError_WhenEmailAlreadyExists&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B9708EC3-8950-4AC8-8D16-3899831C87E5::net8.0::TreewInc.Application.Tests.Features.Clients.Create.CreateClientCommandValidatorTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B9708EC3-8950-4AC8-8D16-3899831C87E5::net8.0::TreewInc.Application.Tests.Features.Clients.Update.UpdateClientCommandHandlerTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B9708EC3-8950-4AC8-8D16-3899831C87E5::net8.0::TreewInc.Application.Tests.Features.Clients.Update.UpdateClientCommandValidatorTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

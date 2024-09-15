@@ -11,8 +11,10 @@ public class CreateClientCommandValidator : AbstractValidator<CreateClientComman
 			.NotEmpty().WithMessage("Email is required")
 			.EmailAddress().WithMessage("Invalid email format.");
 		RuleFor(x => x.Name)
+			.NotNull()
 			.SetValidator(new NameValidator());
 		RuleFor(x => x.Phone)
+			.NotNull()
 			.SetValidator(new PhoneNumberValidator());
 		RuleFor(x => x.Password)
 			.NotEmpty().NotNull().WithMessage("Password is required")

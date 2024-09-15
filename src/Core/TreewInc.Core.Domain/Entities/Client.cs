@@ -1,4 +1,5 @@
-﻿using TreewInc.Core.Domain.Models;
+﻿using TreewInc.Core.Domain.Helpers;
+using TreewInc.Core.Domain.Models;
 
 namespace TreewInc.Core.Domain.Entities;
 
@@ -7,13 +8,13 @@ public class Client : Entity
 	[Obsolete("Parameterless constructors are for EF use only")]
 	public Client() => Sales = new HashSet<Sale>();
 	
-	public Client(Name name, string email, PhoneNumber phone, string passwordHash, ICollection<Sale>? sales = null)
+	public Client(Name name, string email, PhoneNumber phone, string password, ICollection<Sale>? sales = null)
 	{
 		Name = name;
 		Email = email;
 		Phone = phone;
 		Sales = sales ?? new HashSet<Sale>();
-		Password = passwordHash;
+		Password = PassHelper.HashPassword(password);
 	}
 
 	public Name Name { get; private set; }

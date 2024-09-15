@@ -22,9 +22,11 @@ public class ClientEntityTypeConfiguration : IEntityTypeConfiguration<Client>
 			.HasMaxLength(155);
 		builder.Property(e => e.Email)
 			.HasMaxLength(150)
+			.IsRequired()
 			.IsUnicode(false);
 		builder.Property(e => e.Phone)
 			.UsePropertyAccessMode(PropertyAccessMode.Property)
+			.IsRequired()
 			.HasConversion(type => PhoneToString(type), str => StringToPhoneNumber(str))
 			.HasColumnName("PhoneNumber")
 			.HasMaxLength(15);

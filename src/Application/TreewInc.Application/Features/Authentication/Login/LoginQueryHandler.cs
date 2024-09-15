@@ -2,8 +2,8 @@
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Auth;
 using TreewInc.Application.Abstractions.Messaging;
-using TreewInc.Application.Helpers;
 using TreewInc.Core.Domain.Entities;
+using TreewInc.Core.Domain.Helpers;
 
 namespace TreewInc.Application.Features.Authentication.Login;
 

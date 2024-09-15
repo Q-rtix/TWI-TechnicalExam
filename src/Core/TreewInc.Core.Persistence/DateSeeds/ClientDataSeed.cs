@@ -1,14 +1,17 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Runtime.CompilerServices;
 using TreewInc.Core.Domain.Entities;
 using TreewInc.Core.Domain.Models;
 using TreewInc.Core.Persistence.Contexts;
+
+[assembly:InternalsVisibleTo("TreewInc.Application.Tests")]
 
 namespace TreewInc.Core.Persistence.DateSeeds;
 
 internal static class ClientDataSeed
 {
-	private static Faker<Client> Faker()
+	internal static Faker<Client> Faker()
 	{
 		int ids = 1;
 		return new Faker<Client>()
@@ -20,7 +23,8 @@ internal static class ClientDataSeed
 				var phone = f.Phone.PhoneNumber("1 7691651548");
 				var split = phone.Split(' ');
 				return new PhoneNumber(split[0], split[1]);
-			});
+			})
+			.RuleFor(c => c.Password, _ => "Pass1234");
 	}
 	
 	public static void Seed(this EntityTypeBuilder<Client> entity)

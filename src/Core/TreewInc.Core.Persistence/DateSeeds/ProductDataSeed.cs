@@ -1,13 +1,16 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Runtime.CompilerServices;
 using TreewInc.Core.Domain.Entities;
 using TreewInc.Core.Persistence.Contexts;
+
+[assembly:InternalsVisibleTo("TreewInc.Application.Tests")]
 
 namespace TreewInc.Core.Persistence.DateSeeds;
 
 internal static class ProductDataSeed
 {
-	private static Faker<Product> Faker()
+	internal static Faker<Product> Faker()
 	{
 		int ids = 1;
 		return new Faker<Product>()
