@@ -29,4 +29,11 @@ public class Product : Entity
 		Stock = stock;
 		Sales = sales ?? new HashSet<Sale>();
 	}
+
+	public void Sell(int quantity)
+	{
+		if (quantity > Stock)
+			throw new InvalidOperationException("Product stock is not enough");
+		Stock -= quantity;
+	}
 }

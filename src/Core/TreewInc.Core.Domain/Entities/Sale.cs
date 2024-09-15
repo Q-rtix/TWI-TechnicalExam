@@ -11,6 +11,11 @@ public class Sale : Entity
 	public DateTime Date { get; private set; }
 	public decimal TotalPrice { get; private set; }
 
+	[Obsolete("Parameterless constructors are for EF use only")]
+	public Sale()
+	{
+		TotalPrice = 0;
+	}
 
 	public Sale(Client client, Product product, int quantity)
 	{
@@ -21,5 +26,6 @@ public class Sale : Entity
 		Quantity = quantity;
 		Date = DateTime.UtcNow;
 		TotalPrice = product.Price * quantity;
+		Product.Sell(quantity);
 	}
 }

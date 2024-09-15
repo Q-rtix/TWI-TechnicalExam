@@ -19,8 +19,4 @@
 	  <PackageReference Include="Qrtix.Results" Version="2.1.0" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Features\Sales\" />
-	</ItemGroup>
-
 </Project>

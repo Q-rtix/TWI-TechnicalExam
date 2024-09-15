@@ -1,0 +1,19 @@
+meta {
+  name: Create
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base-url-https}}/api/sales
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "clientId": 1,
+    "productId": 1,
+    "quantity": 10
+  }
+}
