@@ -27,7 +27,7 @@ public class LoginQueryHandler : IHandler<LoginQuery, LoginQueryResponse>
 			return ResultFactory.Error<LoginQueryResponse>("Does not exist a client with the provided email.", StatusCodes.Status400BadRequest);
 		
 		if (!PassHelper.VerifyPassword(request.Password, client.Password))
-			return ResultFactory.Error<LoginQueryResponse>("Invalid password.", StatusCodes.Status400BadRequest);
+			return ResultFactory.Error<LoginQueryResponse>(["Invalid password."], StatusCodes.Status400BadRequest);
 
 		var token = _jwtHandler.Generate(client.Email);
 		return ResultFactory.Ok(new LoginQueryResponse(token), StatusCodes.Status200OK);

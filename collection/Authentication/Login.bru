@@ -18,6 +18,10 @@ body:json {
 }
 
 script:post-response {
-  var token = res.body.token
-  bru.setEnvVar('access-token',token)
+  if (res.body.isSucceed)
+  {
+    var token = res.body.value.token
+    bru.setEnvVar('access-token',token)
+    console.log(token)
+  }
 }

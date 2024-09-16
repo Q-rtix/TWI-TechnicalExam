@@ -19,7 +19,7 @@ public class CreateClientCommandHandler : IHandler<CreateClientCommand, CreateCl
 		var repo = _unitOfWork.Repository<Client>();
 		var emailCheck = await repo.GetOneAsync([c => c.Email == request.Email], true, cancellationToken);
 		if (emailCheck is not null)
-			return Error<CreateClientCommandResponse>("Email already in use", StatusCodes.Status400BadRequest);
+			return Error<CreateClientCommandResponse>(["Email already in use"], StatusCodes.Status400BadRequest);
 		var client = new Client(request.Name, request.Email, request.Phone, PassHelper.HashPassword(request.Password));
 		await _unitOfWork.Repository<Client>()
 			.AddOneAsync(client, cancellationToken)

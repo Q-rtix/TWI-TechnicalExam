@@ -20,12 +20,12 @@ public class CreateSaleCommandHandler : IHandler<CreateSaleCommand, CreateSaleCo
 		var productTask = _unitOfWork.Repository<Product>()
 			.GetOneAsync([p => p.Id == request.ProductId], cancellationToken: cancellationToken);
 		if (client is null)
-			return ResultFactory.Error<CreateSaleCommandResponse>($"Client not found with Id: {request.ClientId}", StatusCodes.Status400BadRequest);
+			return ResultFactory.Error<CreateSaleCommandResponse>([$"Client not found with Id: {request.ClientId}"], StatusCodes.Status400BadRequest);
 		var product = await productTask.ConfigureAwait(false);
 		if (product is null)
-			return ResultFactory.Error<CreateSaleCommandResponse>($"Product not found with Id: {request.ProductId}", StatusCodes.Status400BadRequest);
+			return ResultFactory.Error<CreateSaleCommandResponse>([$"Product not found with Id: {request.ProductId}"], StatusCodes.Status400BadRequest);
 		if (product.Stock < request.Quantity)
-			return ResultFactory.Error<CreateSaleCommandResponse>("Product stock is not enough", StatusCodes.Status400BadRequest);
+			return ResultFactory.Error<CreateSaleCommandResponse>(["Product stock is not enough"], StatusCodes.Status400BadRequest);
 
 		var sale = new Sale(client, product, request.Quantity);
 		await _unitOfWork.Repository<Sale>().AddOneAsync(sale, cancellationToken).ConfigureAwait(false);

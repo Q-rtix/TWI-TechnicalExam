@@ -18,7 +18,7 @@ public class RemoveClientCommandHandler : IHandler<RemoveClientCommand, RemoveCl
 		var client = await repo.GetOneAsync([c => c.Id == request.ClientId], cancellationToken: cancellationToken)
 			.ConfigureAwait(false);
 		if (client is null)
-			return ResultFactory.Error<RemoveClientCommandResponse>($"Client not found with Id: {request.ClientId}.", StatusCodes.Status400BadRequest);
+			return ResultFactory.Error<RemoveClientCommandResponse>([$"Client not found with Id: {request.ClientId}."], StatusCodes.Status400BadRequest);
 		
 		repo.RemoveOne(client);
 		await _unitOfWork.SaveAsync(cancellationToken);

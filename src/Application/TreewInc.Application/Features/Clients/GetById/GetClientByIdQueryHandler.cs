@@ -18,7 +18,7 @@ public class GetClientByIdQueryHandler : IHandler<GetClientByIdQuery, GetClientB
 		var client = await _repository.GetOneAsync([c => c.Id == request.ClientId], true, cancellationToken)
 			.ConfigureAwait(false);
 		return client is null 
-			? ResultFactory.Error<GetClientByIdQueryResponse>($"Client not found with Id: {request.ClientId}", StatusCodes.Status404NotFound) 
+			? ResultFactory.Error<GetClientByIdQueryResponse>([$"Client not found with Id: {request.ClientId}"], StatusCodes.Status404NotFound) 
 			: ResultFactory.Ok(new GetClientByIdQueryResponse(client.MapToClientDto()), StatusCodes.Status200OK);
 	}
 }

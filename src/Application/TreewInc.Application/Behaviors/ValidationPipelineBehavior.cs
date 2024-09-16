@@ -1,9 +1,10 @@
 ﻿using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Results;
-using Results.Abstractions;
 using Results.ResultTypes;
 using TreewInc.Application.Models;
+using IResult = Results.Abstractions.IResult;
 
 namespace TreewInc.Application.Behaviors;
 
@@ -34,7 +35,7 @@ public class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineBehavior
 			.GetGenericTypeDefinition()
 			.MakeGenericType(typeof(TResponse).GenericTypeArguments[0])
 			.GetConstructor([typeof(ResultType), typeof(int?)])!
-			.Invoke([new Error(errors), null]);
+			.Invoke([new Error(errors), StatusCodes.Status400BadRequest]);
 		
 		return (TResponse)validationResult;
 	}

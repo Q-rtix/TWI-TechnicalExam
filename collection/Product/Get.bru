@@ -5,12 +5,16 @@ meta {
 }
 
 get {
-  url: {{base-url-https}}/api/products?pageNumber=2&pageSize=10
+  url: {{base-url-https}}/api/products?pageNumber=1&pageSize=10
   body: none
-  auth: none
+  auth: bearer
 }
 
 params:query {
-  pageNumber: 2
+  pageNumber: 1
   pageSize: 10
+}
+
+auth:bearer {
+  token: {{access-token}}
 }

@@ -18,7 +18,7 @@ public class UpdateClientCommandHandler : IHandler<UpdateClientCommand, UpdateCl
 		var client = await repo.GetOneAsync([c => c.Id == request.Id], cancellationToken: cancellationToken)
 			.ConfigureAwait(false);
 		if (client is null)
-			return ResultFactory.Error<UpdateClientCommandResponse>($"Client not found with Id: {request.Id}.", StatusCodes.Status400BadRequest);
+			return ResultFactory.Error<UpdateClientCommandResponse>([$"Client not found with Id: {request.Id}."], StatusCodes.Status400BadRequest);
 		
 		client.Update(request.Name, request.Email, request.Phone);
 		repo.UpdateOne(client);

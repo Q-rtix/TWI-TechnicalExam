@@ -7,14 +7,18 @@ meta {
 post {
   url: {{base-url-https}}/api/products
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{access-token}}
 }
 
 body:json {
   {
     "name": "Product {{product-count}}",
     "description": "Product {{product-count}} description",
-    "price": 300.23,
+    "price": 300.3,
     "stock": 100
   }
 }

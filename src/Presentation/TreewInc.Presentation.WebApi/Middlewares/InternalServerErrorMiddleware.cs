@@ -21,8 +21,8 @@ public class InternalServerErrorMiddleware
 		}
 		catch (Exception e)
 		{
-			_logger.LogCritical(e, "An error occurred while processing the request");
-			var error = new Error(e.Message);
+			_logger.LogCritical(e, $"An error occurred while processing the request");
+			var error = new Error(e.Message, e.Source!);
 			
 			context.Response.StatusCode = StatusCodes.Status500InternalServerError;
 			context.Response.ContentType = "application/json";

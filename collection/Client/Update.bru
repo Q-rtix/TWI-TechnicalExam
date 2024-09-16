@@ -7,7 +7,11 @@ meta {
 put {
   url: {{base-url-https}}/api/clients
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{access-token}}
 }
 
 body:json {

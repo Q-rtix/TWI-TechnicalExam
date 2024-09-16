@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http;
 using Results;
 using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
+using static Results.ResultFactory;
 
 namespace TreewInc.Application.Features.Products.Remove;
 
@@ -16,10 +17,10 @@ public class RemoveProductCommandHandler : IHandler<RemoveProductCommand, Remove
 		var repo = _unitOfWork.Repository<Core.Domain.Entities.Product>();
 		var product = await repo.GetOneAsync([p => p.Id == request.ProductId], cancellationToken: cancellationToken);
 		if (product is null)
-			return ResultFactory.Error<RemoveProductCommandResponse>("Product not found", StatusCodes.Status400BadRequest);
+			return Error<RemoveProductCommandResponse>([$"Product not found with Id: {request.ProductId}"], StatusCodes.Status400BadRequest);
 		
 		repo.RemoveOne(product);
 		await _unitOfWork.SaveAsync(cancellationToken);
-		return ResultFactory.Ok(new RemoveProductCommandResponse(product.Id), StatusCodes.Status200OK);
+		return Ok(new RemoveProductCommandResponse(product.Id), StatusCodes.Status200OK);
 	}
 }

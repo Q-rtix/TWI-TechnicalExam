@@ -7,7 +7,7 @@ meta {
 get {
   url: {{base-url-https}}/api/clients/search?minPrice=100
   body: none
-  auth: none
+  auth: bearer
 }
 
 params:query {
@@ -17,6 +17,10 @@ params:query {
   ~maxPrice: 200
   ~minStock: 
   ~maxStock: 
+}
+
+auth:bearer {
+  token: {{access-token}}
 }
 
 body:json {

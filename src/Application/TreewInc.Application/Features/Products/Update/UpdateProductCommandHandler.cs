@@ -18,7 +18,7 @@ public class UpdateProductCommandHandler : IHandler<UpdateProductCommand, Update
 			.GetOneAsync([p => p.Id == request.Id], cancellationToken: cancellationToken);
 		
 		if (product is null)
-			return ResultFactory.Error<UpdateProductCommandResponse>("Product not found", StatusCodes.Status400BadRequest);
+			return ResultFactory.Error<UpdateProductCommandResponse>([$"Product not found with Id: {request.Id}"], StatusCodes.Status400BadRequest);
 		
 		product.Update(request.Name, request.Description, request.Price, request.Stock);
 		await _unitOfWork.SaveAsync(cancellationToken);
