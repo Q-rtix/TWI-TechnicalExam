@@ -1,0 +1,43 @@
+meta {
+  name: Get Clients
+  type: graphql
+  seq: 1
+}
+
+post {
+  url: {{graphql-url}}
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query {
+    clients {
+      id
+      name {
+        firstName
+        middleName
+        lastName
+      }
+      email
+      phone {
+        countryCode
+        number
+      }
+      sales {
+        id
+        date
+        quantity
+        totalPrice
+        product {
+          id
+          name
+          description
+          price
+          stock
+        }
+      }
+    }
+  }
+  
+}

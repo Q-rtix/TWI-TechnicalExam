@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreewInc.Core.Abstractions"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreewInc.Core.Settings", "src\Core\TreewInc.Core.Settings\TreewInc.Core.Settings.csproj", "{64AE67C7-2472-4762-8D24-AD361CEBCD0A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreewInc.Presentation.GraphQL", "src\Presentation\TreewInc.Presentation.GraphQL\TreewInc.Presentation.GraphQL.csproj", "{9CBC83BA-B199-458B-9E41-78719EDF7C2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,7 @@ Global
 		{8DA58DFD-0E50-4688-B65A-56E279939F81} = {942165D8-2FE1-4109-9193-7EDB655ED909}
 		{2122CB22-9DCA-4BF5-8101-29AAEF5E1300} = {65627219-7124-435B-9C81-07C3341F6309}
 		{64AE67C7-2472-4762-8D24-AD361CEBCD0A} = {65627219-7124-435B-9C81-07C3341F6309}
+		{9CBC83BA-B199-458B-9E41-78719EDF7C2A} = {612B2D46-3E8F-49D1-8F92-5141F472BAF8}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FB051A6A-51DC-453C-AAFD-D2B123D6DBF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -89,5 +92,9 @@ Global
 		{64AE67C7-2472-4762-8D24-AD361CEBCD0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64AE67C7-2472-4762-8D24-AD361CEBCD0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64AE67C7-2472-4762-8D24-AD361CEBCD0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CBC83BA-B199-458B-9E41-78719EDF7C2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CBC83BA-B199-458B-9E41-78719EDF7C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CBC83BA-B199-458B-9E41-78719EDF7C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CBC83BA-B199-458B-9E41-78719EDF7C2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

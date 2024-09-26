@@ -7,7 +7,7 @@
     ".git"
   ],
   "presets": {
-    "requestType": "http",
-    "requestUrl": "{{base-url-https}}/api/"
+    "requestType": "graphql",
+    "requestUrl": "{{graphql-url}}"
   }
 }
