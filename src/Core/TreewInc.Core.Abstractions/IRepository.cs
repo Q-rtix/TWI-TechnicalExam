@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using TreewInc.Core.Domain.Entities;
 
-namespace TreewInc.Application.Abstractions;
+namespace TreewInc.Core.Abstractions;
 
 public interface IRepository<TEntity> where TEntity : Entity
 {

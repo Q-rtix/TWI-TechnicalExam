@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Paging.Extensions;
 using Results;
-using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
 using TreewInc.Application.Dtos.Mappers;
+using TreewInc.Core.Abstractions;
 using TreewInc.Core.Domain.Entities;
 
 namespace TreewInc.Application.Features.Clients.Get;

@@ -4,12 +4,12 @@ using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text;
 using TreewInc.Application;
-using TreewInc.Application.Settings;
 using TreewInc.Core.Infrastructure;
 using TreewInc.Core.Persistence;
 using TreewInc.Core.Persistence.Contexts;
 using TreewInc.Core.Persistence.DateSeeds;
 using TreewInc.Core.Persistence.Extensions;
+using TreewInc.Core.Settings;
 using TreewInc.Presentation.WebApi.Configurations.Jwt;
 using TreewInc.Presentation.WebApi.Middlewares;
 

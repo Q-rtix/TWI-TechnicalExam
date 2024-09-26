@@ -7,8 +7,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Application\TreewInc.Application\TreewInc.Application.csproj" />
+	  <ProjectReference Include="..\TreewInc.Core.Abstractions\TreewInc.Core.Abstractions.csproj" />
 	  <ProjectReference Include="..\TreewInc.Core.Persistence\TreewInc.Core.Persistence.csproj" />
+	  <ProjectReference Include="..\TreewInc.Core.Settings\TreewInc.Core.Settings.csproj" />
 	</ItemGroup>
 
 </Project>

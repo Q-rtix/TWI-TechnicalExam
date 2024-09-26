@@ -3,8 +3,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using TreewInc.Application.Abstractions.Auth;
-using TreewInc.Application.Settings;
+using TreewInc.Core.Abstractions.Auth;
+using TreewInc.Core.Settings;
 
 namespace TreewInc.Core.Infrastructure.Services.Auth;
 

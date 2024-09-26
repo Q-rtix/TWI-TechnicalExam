@@ -1,6 +1,6 @@
 ﻿using TreewInc.Core.Domain.Entities;
 
-namespace TreewInc.Application.Abstractions;
+namespace TreewInc.Core.Abstractions;
 
 public interface IUnitOfWork
 {

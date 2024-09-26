@@ -1,4 +1,4 @@
-namespace TreewInc.Application.Settings;
+namespace TreewInc.Core.Settings;
 
 public class JwtSettings
 {

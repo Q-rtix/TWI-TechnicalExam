@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Results;
-using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
 using TreewInc.Application.Dtos.Mappers;
+using TreewInc.Core.Abstractions;
 using TreewInc.Core.Domain.Entities;
 
 namespace TreewInc.Application.Features.Clients.GetById;

@@ -1,4 +1,4 @@
-﻿using TreewInc.Application.Abstractions;
+﻿using TreewInc.Core.Abstractions;
 using TreewInc.Core.Domain.Entities;
 using TreewInc.Core.Infrastructure.Repositories;
 using TreewInc.Core.Persistence.Contexts;

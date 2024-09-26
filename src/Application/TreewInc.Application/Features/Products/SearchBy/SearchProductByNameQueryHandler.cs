@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Results;
 using System.Linq.Expressions;
-using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
+using TreewInc.Core.Abstractions;
 using TreewInc.Core.Domain.Entities;
 using static Results.ResultFactory;
 

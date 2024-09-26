@@ -1,4 +1,4 @@
-﻿namespace TreewInc.Application.Abstractions.Auth;
+﻿namespace TreewInc.Core.Abstractions.Auth;
 
 public interface IJwtHandler
 {

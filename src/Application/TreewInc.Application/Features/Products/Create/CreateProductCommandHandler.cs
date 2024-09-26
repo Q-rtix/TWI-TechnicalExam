@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Results;
-using TreewInc.Application.Abstractions;
 using TreewInc.Application.Abstractions.Messaging;
+using TreewInc.Core.Abstractions;
 
 namespace TreewInc.Application.Features.Products.Create;
 

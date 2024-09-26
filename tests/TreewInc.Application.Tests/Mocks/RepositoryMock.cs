@@ -1,6 +1,6 @@
 ﻿using Moq;
 using System.Linq.Expressions;
-using TreewInc.Application.Abstractions;
+using TreewInc.Core.Abstractions;
 using TreewInc.Core.Domain.Entities;
 using TreewInc.Core.Domain.Models;
 using TreewInc.Core.Persistence.DateSeeds;

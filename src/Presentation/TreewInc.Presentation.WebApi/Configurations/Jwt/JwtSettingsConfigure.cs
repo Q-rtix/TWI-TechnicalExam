@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
-using TreewInc.Application.Settings;
+using TreewInc.Core.Settings;
 
 namespace TreewInc.Presentation.WebApi.Configurations.Jwt;
 

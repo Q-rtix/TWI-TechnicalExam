@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TreewInc.Application.Abstractions;
-using TreewInc.Application.Abstractions.Auth;
+using TreewInc.Core.Abstractions;
+using TreewInc.Core.Abstractions.Auth;
 using TreewInc.Core.Infrastructure.Repositories;
 using TreewInc.Core.Infrastructure.Services.Auth;
 

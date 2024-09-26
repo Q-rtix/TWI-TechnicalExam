@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using Moq;
-using TreewInc.Application.Abstractions;
 using TreewInc.Application.Features.Clients.Update;
 using TreewInc.Application.Tests.Mocks;
+using TreewInc.Core.Abstractions;
 using TreewInc.Core.Domain.Entities;
 using TreewInc.Core.Persistence.DateSeeds;
 

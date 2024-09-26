@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="GraphQL" Version="4.2.0" />
+	  <PackageReference Include="GraphQL.DataLoader" Version="4.2.0" />
+	  <PackageReference Include="GraphQL.SystemTextJson" Version="4.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Core\TreewInc.Core.Infrastructure\TreewInc.Core.Infrastructure.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Abstractions\" />
+	</ItemGroup>
+
+</Project>

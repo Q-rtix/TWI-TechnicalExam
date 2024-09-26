@@ -1,5 +1,5 @@
 ﻿using Moq;
-using TreewInc.Application.Abstractions;
+using TreewInc.Core.Abstractions;
 using TreewInc.Core.Domain.Entities;
 
 namespace TreewInc.Application.Tests.Mocks;

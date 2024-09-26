@@ -19,6 +19,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\Application\TreewInc.Application\TreewInc.Application.csproj" />
 	  <ProjectReference Include="..\..\Core\TreewInc.Core.Infrastructure\TreewInc.Core.Infrastructure.csproj" />
 	</ItemGroup>
 
