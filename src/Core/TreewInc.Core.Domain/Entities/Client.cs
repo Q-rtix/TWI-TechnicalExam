@@ -17,10 +17,10 @@ public class Client : Entity
 		Password = PassHelper.HashPassword(password);
 	}
 
-	public Name Name { get; private set; }
-	public string Email { get; private set; }
-	public PhoneNumber Phone { get; private set; }
-	public string Password { get; private set; }
+	public Name Name { get; set; }
+	public string Email { get; set; }
+	public PhoneNumber Phone { get; set; }
+	public string Password { get => Password; set => PassHelper.HashPassword(value); }
 
 	public ICollection<Sale> Sales { get; private set; }
 

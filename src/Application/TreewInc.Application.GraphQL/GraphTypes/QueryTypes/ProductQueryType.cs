@@ -2,6 +2,7 @@
 using GraphQL.Types;
 using TreewInc.Application.GraphQL.Abstractions.Services;
 using TreewInc.Core.Domain.Entities;
+using GraphQL;
 
 namespace TreewInc.Application.GraphQL.GraphTypes.QueryTypes;
 
@@ -14,8 +15,7 @@ public sealed class ProductQueryType : ObjectGraphType<Product>
 		Field(p => p.Description);
 		Field(p => p.Price);
 		Field(p => p.Stock);
-		Field<ListGraphType<SaleQueryType>, IEnumerable<Sale>>()
-			.Name("sales")
+		Field<ListGraphType<SaleQueryType>, IEnumerable<Sale>>("sales")
 			.ResolveAsync(context => 
 				accessor.Context.GetOrAddCollectionBatchLoader<int, Sale>("GetSalesByProductIds", service.GetSalesByProductIdsAsync)
 					.LoadAsync(context.Source.Id));

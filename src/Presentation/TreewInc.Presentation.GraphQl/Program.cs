@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using TreewInc.Application.GraphQL;
-using TreewInc.Application.GraphQL.Extensions;
 using TreewInc.Core.Infrastructure;
 using TreewInc.Core.Persistence;
+using TreewInc.Application.GraphQL.Schemas;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddPersistence(builder.Configuration, builder.Environment)
 	.AddInfrastructure()
-	.AddGraphQl(options => options.Endpoint = "/graphql");
+	.AddGraphQLApplication(builder.Environment);
 
 builder.Services.Configure<KestrelServerOptions>(options => options.AllowSynchronousIO = true);
 
@@ -26,6 +26,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseGraphQl();
+app.UseGraphQL<TreewIncSchema>(path: "/graphql");
 
 app.Run();

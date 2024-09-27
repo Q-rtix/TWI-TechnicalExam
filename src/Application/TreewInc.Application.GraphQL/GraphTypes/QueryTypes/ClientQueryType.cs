@@ -3,6 +3,7 @@ using GraphQL.Types;
 using TreewInc.Application.GraphQL.Abstractions.Services;
 using TreewInc.Application.GraphQL.GraphTypes.Types;
 using TreewInc.Core.Domain.Entities;
+using GraphQL;
 
 namespace TreewInc.Application.GraphQL.GraphTypes.QueryTypes;
 
@@ -14,8 +15,7 @@ public sealed class ClientQueryType : ObjectGraphType<Client>
 		Field(c => c.Name, type: typeof(NameType));
 		Field(c => c.Email);
 		Field(c => c.Phone, type: typeof(PhoneType));
-		Field<ListGraphType<SaleQueryType>, IEnumerable<Sale>>()
-			.Name("sales")
+		Field<ListGraphType<SaleQueryType>, IEnumerable<Sale>>("sales")
 			.ResolveAsync(context =>
 				accessor.Context.GetOrAddCollectionBatchLoader<int, Sale>("GetSalesByClientId", service.GetSalesByClientIdsAsync)
 					.LoadAsync(context.Source.Id)

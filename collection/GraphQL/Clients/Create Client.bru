@@ -12,20 +12,14 @@ post {
 
 body:graphql {
   mutation (
-    $firstName: String!
-    $middleName: String
-    $lastName: String!
+    $name: NameInput!
     $email: String!
     $password: String!
-    $phone: PhoneInputType!
+    $phone: PhoneInput!
   ) {
     createClient(
       client: {
-        name: {
-          firstName: $firstName
-          middleName: $middleName
-          lastName: $lastName
-        }
+        name: $name
         email: $email
         phone: $phone
         password: $password
@@ -49,8 +43,10 @@ body:graphql {
 
 body:graphql:vars {
   {
-    "firstName": "first name",
-    "lastName": "lastName",
+    "name": {
+      "firstName": "first name",
+      "lastName": "lastName"
+    },
     "email": "test@email.com",
     "password": "Pass1234",
     "phone": {

@@ -7,15 +7,9 @@ public sealed class NameInputType : InputObjectGraphType<Name>
 {
 	public NameInputType()
 	{
-		Name = "Name";
-		Field<NonNullGraphType<StringGraphType>>()
-			.Name("firstName")
-			.Resolve(context => context.Source.FirstName);
-		Field<StringGraphType>()
-			.Name("middleName")
-			.Resolve(context => context.Source.MiddleName);
-		Field<NonNullGraphType<StringGraphType>>()
-			.Name("lastName")
-			.Resolve(context => context.Source.LastName);
+		Name = "NameInput";
+		Field<NonNullGraphType<StringGraphType>>("firstName");
+		Field<StringGraphType>("middleName");
+		Field<NonNullGraphType<StringGraphType>>("lastName");
 	}
 }

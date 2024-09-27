@@ -11,8 +11,7 @@ public sealed class TreewIncMutation : ObjectGraphType
 {
 	public TreewIncMutation(IClientService clientService)
 	{
-		Field<ClientQueryType>()
-			.Name("createClient")
+		Field<ClientQueryType>("createClient")
 			.Argument<NonNullGraphType<CreateClientMutationType>>("client")
 			.ResolveAsync(async context =>
 			{
