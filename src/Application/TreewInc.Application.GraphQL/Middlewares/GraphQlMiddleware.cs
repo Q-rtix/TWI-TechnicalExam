@@ -1,8 +1,10 @@
 using GraphQL;
 using GraphQL.DataLoader;
 using GraphQL.Types;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using System.Text.Json;
 using TreewInc.Application.GraphQL.Requests;
@@ -16,15 +18,18 @@ public class GraphQlMiddleware
 	private readonly GraphQlSettings _settings;
 	private readonly IDocumentExecuter _executer;
 	private readonly IDocumentWriter _writer;
+	private readonly IWebHostEnvironment _env;
 
 	public GraphQlMiddleware(RequestDelegate next,
 		IDocumentExecuter executer, 
 		IDocumentWriter writer, 
-		IOptions<GraphQlSettings> settings)
+		IOptions<GraphQlSettings> settings, 
+		IWebHostEnvironment env)
 	{
 		_next = next;
 		_executer = executer;
 		_writer = writer;
+		_env = env;
 		_settings = settings.Value;
 	}
 
@@ -46,6 +51,7 @@ public class GraphQlMiddleware
 			doc.Query = request!.Query;
 			doc.Inputs = request.Variables.ToInputs();
 			doc.Listeners.Add(provider.GetRequiredService<DataLoaderDocumentListener>());
+			doc.ThrowOnUnhandledException = _env.IsDevelopment();
 		}).ConfigureAwait(false);
 		
 		context.Response.ContentType = "application/json";

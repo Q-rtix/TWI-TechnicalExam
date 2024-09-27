@@ -10,6 +10,6 @@ public class TreewIncSchema : Schema
 	public TreewIncSchema(IServiceProvider provider) : base(provider)
 	{
 		Query = provider.GetRequiredService<TreewIncQuery>();
-		// Mutation = provider.GetRequiredService<TreewIncMutatition>();
+		Mutation = provider.GetRequiredService<TreewIncMutation>();
 	}
 }

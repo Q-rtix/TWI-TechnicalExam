@@ -1,0 +1,61 @@
+meta {
+  name: Create Client
+  type: graphql
+  seq: 2
+}
+
+post {
+  url: {{graphql-url}}
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  mutation (
+    $firstName: String!
+    $middleName: String
+    $lastName: String!
+    $email: String!
+    $password: String!
+    $phone: PhoneInputType!
+  ) {
+    createClient(
+      client: {
+        name: {
+          firstName: $firstName
+          middleName: $middleName
+          lastName: $lastName
+        }
+        email: $email
+        phone: $phone
+        password: $password
+      }
+    ) {
+      id
+      email
+      name {
+        firstName
+        middleName
+        lastName
+      }
+      phone {
+        countryCode
+        number
+      }
+    }
+  }
+  
+}
+
+body:graphql:vars {
+  {
+    "firstName": "first name",
+    "lastName": "lastName",
+    "email": "test@email.com",
+    "password": "Pass1234",
+    "phone": {
+      "countryCode": "53",
+      "number": "55647898"
+    }
+  }
+}

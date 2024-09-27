@@ -6,4 +6,5 @@ public interface IClientService
 {
 	Task<ILookup<int, Sale>> GetSalesByClientIdsAsync(IEnumerable<int> clientIds, CancellationToken cancellationToken);
 	Task<IEnumerable<Client>> GetClients();
+	Task<Client> CreateClientAsync(Client client);
 }

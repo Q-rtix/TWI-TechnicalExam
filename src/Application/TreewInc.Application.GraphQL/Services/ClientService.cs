@@ -27,4 +27,12 @@ public class ClientService : IClientService
 
 	public async Task<IEnumerable<Client>> GetClients()
 		=> await _unitOfWork.Repository<Client>().GetMany(asNoTracking: true).ToListAsync();
+
+	public async Task<Client> CreateClientAsync(Client client)
+	{
+		await _unitOfWork.Repository<Client>().AddOneAsync(client);
+		await _unitOfWork.SaveAsync();
+		
+		return client;
+	}
 }

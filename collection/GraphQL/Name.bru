@@ -1,0 +1,17 @@
+meta {
+  name: Name
+  type: graphql
+  seq: 1
+}
+
+post {
+  url: {{graphql-url}}
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query {
+    name
+  }
+}

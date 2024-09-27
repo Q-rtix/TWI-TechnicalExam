@@ -10,6 +10,7 @@
 	  <PackageReference Include="GraphQL" Version="4.2.0" />
 	  <PackageReference Include="GraphQL.DataLoader" Version="4.2.0" />
 	  <PackageReference Include="GraphQL.SystemTextJson" Version="4.2.0" />
+	  <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
 	  <PackageReference Include="Qrtix.Paging" Version="1.0.3" />
 	</ItemGroup>
 
@@ -19,10 +20,12 @@
 
 	<ItemGroup>
 	  <Folder Include="Abstractions\" />
-	  <Folder Include="GraphTypes\MutationTypes\" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions">
+	    <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\8.0.5\Microsoft.AspNetCore.Hosting.Abstractions.dll</HintPath>
+	  </Reference>
 	  <Reference Include="Microsoft.AspNetCore.Http.Abstractions">
 	    <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\8.0.5\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
 	  </Reference>

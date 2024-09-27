@@ -4,6 +4,7 @@ using GraphQL.SystemTextJson;
 using GraphQL.Types;
 using Microsoft.Extensions.DependencyInjection;
 using TreewInc.Application.GraphQL.Abstractions.Services;
+using TreewInc.Application.GraphQL.GraphTypes.MutationTypes;
 using TreewInc.Application.GraphQL.GraphTypes.QueryTypes;
 using TreewInc.Application.GraphQL.GraphTypes.Types;
 using TreewInc.Application.GraphQL.Mutations;
@@ -26,7 +27,8 @@ public static class DependencyInjection
 			.AddGraphQlQueries()
 			.AddGraphQlMutations()
 			.AddGraphQlServices()
-			.AddGraphQlQueryTypes();
+			.AddGraphQlQueryTypes()
+			.AddGraphQlMutationTypes();
 
 		return services;
 	}
@@ -38,6 +40,15 @@ public static class DependencyInjection
 		services.AddScoped<NameType>();
 		services.AddScoped<PhoneType>();
 		services.AddScoped<ProductQueryType>();
+		
+		return services;
+	}
+	
+	private static IServiceCollection AddGraphQlMutationTypes(this IServiceCollection services)
+	{
+		services.AddScoped<NameInputType>();
+		services.AddScoped<PhoneInputType>();
+		services.AddScoped<CreateClientMutationType>();
 		
 		return services;
 	}
@@ -75,7 +86,7 @@ public static class DependencyInjection
 
 	private static IServiceCollection AddGraphQlMutations(this IServiceCollection services)
 	{
-		services.AddScoped<TreewIncMutatition>();
+		services.AddScoped<TreewIncMutation>();
 
 		return services;
 	}
